@@ -1,0 +1,8 @@
+p f2 v360 w320 h240
+
+o f0 w320 h240 y70 p0 r0 v90 
+SPLINE(100,100,30,30)
+o f0 w320 h240 y200 p20 r10 v120 nsame
+o f0 w320 h240 y360 p0 r0 v60 nsame
+o f0 w320 h240 y360 p0 r180 v120 nsame
+o f0 w320 h240 y360 p0 r360 v60 nsame

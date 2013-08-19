@@ -1,0 +1,63 @@
+Mpremap: Mpremap-Menu
+=====================
+This menu manages interaction with
+the 'mpremap'-helper-application. 
+
+
+1. Path to Mpremap:
+-------------------
+
+Find the 'mpremap'-application in
+your file-system.
+
+
+2. Extract:
+-----------
+
+Use extract mode (default: insert mode).
+In this mode scriptlines starting with
+the letter 'p' specify input images,
+while lines starting with 'o' specify 
+output. This is reversed in default mode 
+(insert).
+
+3. Conversion Script:
+---------------------
+
+Find (and display) a suitable conversion
+script. Please see the 'Mpremap-script' help
+item for script syntax, and check the examples
+in the distribution.
+
+
+4. Edit Script:
+---------------
+
+The script file can be edited using any plain-text 
+editor. The builtin editor is Sun's implementation
+of Notepad. Please see the 'Mpremap-script' help
+item for script syntax, and check the examples
+in the distribution.
+
+
+5.JPEG-Quality:
+---------------
+
+Specify quality (0...100) of JPEG compressor.
+This option is only used if output is set to
+JPEG-format, and ignored in all other cases.
+
+
+6. Motion Blur:
+---------------
+Apply motion blur (optional, default: 1).
+This option is only used in "extract"-mode
+and blurs the images during rapid panning
+and zooming. This leads to more natural
+appearance of virtual pans and less stutter.
+Blurring is accomplished by creating 
+a number of images (amount specified by
+the option) which interpolate the last two
+positions in the virtual move. These images
+are then averaged. Processing time increases
+proportional to this number.

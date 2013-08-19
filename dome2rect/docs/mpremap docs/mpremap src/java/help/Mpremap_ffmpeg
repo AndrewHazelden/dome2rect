@@ -1,0 +1,58 @@
+Mpremap: Ffmpeg-Menu
+=====================
+This menu manages interaction with
+the 'ffmpeg'-helper-application. 
+
+
+1. Path to Ffmpeg:
+------------------
+
+Find the 'ffmpeg'-application in
+your file-system.
+
+
+2. Input via Ffmpeg:
+--------------------
+
+Set if input should be fed through
+ffmpeg. This is required for all video
+input formats.
+
+
+3. Deinterlace:
+---------------
+
+Set if your input video is interlaced.
+
+
+4. Video Options:
+-----------------
+
+Any combination of the myriads of available
+ffmpeg options can be set. Check the ffmpeg
+documentation for details. The default
+" -b 2000kb  -vcodec mpeg2video " specifies
+a bitrate of 2000bBit/second and MPEG2-format.
+
+For Windows (WMP) use either
+" -vcodec msmpeg4 -vtag MP43 " or
+" -vcodec msmpeg4v2 " or
+" -vcodec wmv7 "
+The outputfile must have the extension ".avi"
+
+For Apple Quicktime empty this
+option and use a filename ending with
+".mov" or ".mp4"
+
+
+5. Audio Options:
+
+Any combination of the myriads of available
+ffmpeg options can be set. Check the ffmpeg
+documentation for details. The default
+" -acodec copy" copies input audio to output.
+Specify nothing if no audiodata should be added.
+Use " -acodec mp3 " or  " -acodec mp2 "
+for WMP and Quicktime.
+
+

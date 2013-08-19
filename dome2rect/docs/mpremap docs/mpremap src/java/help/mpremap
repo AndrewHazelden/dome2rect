@@ -1,0 +1,114 @@
+mpremap - Remap from/to Motion Pictures
+=======================================
+
+Summary:
+--------
+With mpremap motion pictures can be remapped from 
+and to almost any geometric projection. Images made 
+with fisheye lenses can be 'rectified' to wide-angle 
+rectilinear or cylindrical formats. Arbitrary partial 
+views can be extracted from wide angle images. Static
+panoramic images can be transformed into movies. Lens 
+distortion corrections and perspective changes can 
+be accomplished. Any transformation supported by the 
+underlying Panorama-Tools-library may be applied. 
+
+Transformations use either global, constant parameters, 
+or per-frame specifications. The latter method allows the 
+user to generate virtual moving camera positons (pan, 
+tilt, rotate and zoom) from static source material. A 
+few examples can be viewed at my website
+http://www.fh-furtwangen.de/~dersch
+
+Usage:
+------
+
+Invokation:
+
+mpremap [options] [inputfile1, inputfile2,...]
+
+input        Specify inputfile names. Any number of
+             images in formats supported by the 
+             Panorama Tools library pano12 can be 
+             used. The supported file formats depend
+             on the computer platform; ppm is always
+             available and can be generated from almost 
+             any other format using the free netpbm
+             utilities. 
+             Multiple numbered images can be read using
+             a filename containing the percent-sign '%'.
+             mpremap inserts an integer number starting with
+             0 according to the rules of the C-function 'printf'.
+             Example: The input file name 'image%d.jpg' is
+             expanded to 'image0.jpg image1.jpg image2.jpg ...'
+             A continous stream of ppm-frames is read
+             from standard input if "-" is specified 
+             as inputfile name.
+             HDR-images are supported via ppm-48bit pixels.  
+             
+
+List of options:
+
+-o name      Specify name of outputfile (required)
+             Single JPEG-encoded frames are written
+             if this name ends with ".jpg". 
+             All other names lead to "ppm"-encoded frames.
+             Consecutive numbering of frames is
+             achieved by embedding the sequence "%d"
+             somwhere in the name, which will be 
+             replaced by the framenumber.
+             Using "-" as output name causes ppm-
+             encoded frames to be continouesly written
+             to standard output.
+
+-f script    Specify name of scriptfile (required except 
+             if F-option given instead).
+             The scriptfile contains global or per-frame
+             conversion specifications. See separate
+             chapter for syntax.
+             
+-F command   Specify conversion command (required except 
+             if f-option given instead). Short scripts 
+             (e.g. twoliners for static global 
+             conversion parameters)can be given on the 
+             commandline using this option. To avoid
+             shell-quoting madness, the script can be 
+             entered as one word using "_" for whitespace
+             and ":" for line separator, e.g.
+             -F p_f2_w1000_h500_v120:o_f0_y0_p10_r0_v100
+
+-q number    Specify quality (0...100) of JPEG compressor.
+             (optional, default: 80). This option is only 
+             used if output is set to JPEG-format, and 
+             ignored in all other cases.
+             
+-e           Use extract mode (default: insert mode).
+             In this mode scriptlines starting with
+             the letter 'p' specify input images,
+             while lines starting with 'o' specify 
+             output. This is reversed in default mode 
+             (insert).
+             
+-b number    Apply motion blur (optional, default: 1).
+             This option is only used in "extract"-mode
+             and blurs the images during rapid panning
+             and zooming. This leads to more natural
+             appearance of virtual pans and less stutter.
+             Blurring is accomplished by creating 
+             a number of images (amount specified by
+             the option) which interpolate the last two
+             positions in the virtual move. These images
+             are then averaged. Processing time increases
+             proportional to this number.
+             
+-s           Stitch (optional, default: off). This option
+             is only used in "insert" mode. If set, the
+             previous frame is used as background for the
+             current frame. This can be used to fill
+             uncovered areas resulting from shift 
+             operations.
+
+-h           Print help message.
+             
+
+

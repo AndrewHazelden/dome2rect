@@ -1,0 +1,36 @@
+Mpremap is a Java-front-end and user-interface
+to the command-line utilities 'mpremap' and
+'ffmpeg'. It either reads single frames or
+uses ffmpeg to read and decode video-streams 
+into single frames. Each frame is piped to the 
+'mpremap' application which remaps each frame 
+as specified by a script file. Finally, the 
+frames may optionally be combined into a videostream
+using ffmpeg.
+
+Potential uses for Mpremap:
+
+(1) Create a movie from static panoramic
+images.
+
+(2) Remap motion pictures made with a fisheye
+lens to rectilinear or cylindrical formats.
+
+(3) Create virtual pans and zooms in wide angle
+videos.
+
+(4) Apply arbitrary distortion corrections
+or perspective transformations to motion pictures.
+
+
+Usage:
+------
+
+Set the conversion options as described in the
+respective menu-descriptions. Then click 'ok'.
+The conversion is monitored in the status window
+and progress messages from all helper applications
+are displayed. Wait until the message 'Conversion
+finished' appears. You may interrupt at any time
+by clicking 'Cancel' or by closing the application
+window.

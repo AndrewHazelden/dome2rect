@@ -1,0 +1,313 @@
+3.3 Video Options
+
+`-b bitrate'
+    Set the video bitrate in bit/s (default = 200 kb/s). 
+`-vframes number'
+    Set the number of video frames to record. 
+`-r fps'
+    Set frame rate (Hz value, fraction or abbreviation), 
+    (default = 25). 
+`-s size'
+    Set frame size. The format is `wxh' (ffserver 
+    default = 160x128, ffmpeg default = same as source). 
+    The following abbreviations are recognized:
+
+    `sqcif'
+        128x96 
+    `qcif'
+        176x144 
+    `cif'
+        352x288 
+    `4cif'
+        704x576 
+    `qqvga'
+        160x120 
+    `qvga'
+        320x240 
+    `vga'
+        640x480 
+    `svga'
+        800x600 
+    `xga'
+        1024x768 
+    `uxga'
+        1600x1200 
+    `qxga'
+        2048x1536 
+    `sxga'
+        1280x1024 
+    `qsxga'
+        2560x2048 
+    `hsxga'
+        5120x4096 
+    `wvga'
+        852x480 
+    `wxga'
+        1366x768 
+    `wsxga'
+        1600x1024 
+    `wuxga'
+        1920x1200 
+    `woxga'
+        2560x1600 
+    `wqsxga'
+        3200x2048 
+    `wquxga'
+        3840x2400 
+    `whsxga'
+        6400x4096 
+    `whuxga'
+        7680x4800 
+    `cga'
+        320x200 
+    `ega'
+        640x350 
+    `hd480'
+        852x480 
+    `hd720'
+        1280x720 
+    `hd1080'
+        1920x1080 
+
+`-aspect aspect'
+    Set aspect ratio (4:3, 16:9 or 1.3333, 1.7777). 
+`-croptop size'
+    Set top crop band size (in pixels). 
+`-cropbottom size'
+    Set bottom crop band size (in pixels). 
+`-cropleft size'
+    Set left crop band size (in pixels). 
+`-cropright size'
+    Set right crop band size (in pixels). 
+`-padtop size'
+    Set top pad band size (in pixels). 
+`-padbottom size'
+    Set bottom pad band size (in pixels). 
+`-padleft size'
+    Set left pad band size (in pixels). 
+`-padright size'
+    Set right pad band size (in pixels). 
+`-padcolor (hex color)'
+    Set color of padded bands. The value for padcolor 
+    is expressed as a six digit hexadecimal number where 
+    the first two digits represent red, the middle two 
+    digits green and last two digits blue 
+    (default = 000000 (black)). 
+`-vn'
+    Disable video recording. 
+`-bt tolerance'
+    Set video bitrate tolerance (in bit/s). 
+`-maxrate bitrate'
+    Set max video bitrate (in bit/s). 
+`-minrate bitrate'
+    Set min video bitrate (in bit/s). 
+`-bufsize size'
+    Set video buffer verifier buffer size (in bits). 
+`-vcodec codec'
+    Force video codec to codec. Use the copy special 
+    value to tell that the raw codec data must be 
+    copied as is. 
+`-sameq'
+    Use same video quality as source (implies VBR). 
+`-pass n'
+    Select the pass number (1 or 2). It is useful to 
+    do two pass encoding. The statistics of the video 
+    are recorded in the first pass and the video is 
+    generated at the exact requested bitrate in the 
+    second pass. 
+`-passlogfile file'
+    Set two pass logfile name to file. 
+`-newvideo'
+    Add a new video stream to the current output stream. 
+
+3.4 Advanced Video Options
+
+`-pix_fmt format'
+    Set pixel format. Use 'list' as parameter to show 
+    all the supported pixel formats. 
+`-sws_flags flags'
+    Set SwScaler flags (only available when compiled 
+    with SwScaler support). 
+`-g gop_size'
+    Set the group of pictures size. 
+`-intra'
+    Use only intra frames. 
+`-vdt n'
+    Discard threshold. 
+`-qscale q'
+    Use fixed video quantizer scale (VBR). 
+`-qmin q'
+    minimum video quantizer scale (VBR) 
+`-qmax q'
+    maximum video quantizer scale (VBR) 
+`-qdiff q'
+    maximum difference between the quantizer scales (VBR) 
+`-qblur blur'
+    video quantizer scale blur (VBR) 
+`-qcomp compression'
+    video quantizer scale compression (VBR) 
+`-lmin lambda'
+    minimum video lagrange factor (VBR) 
+`-lmax lambda'
+    max video lagrange factor (VBR) 
+`-mblmin lambda'
+    minimum macroblock quantizer scale (VBR) 
+`-mblmax lambda'
+    maximum macroblock quantizer scale (VBR) These four 
+    options (lmin, lmax, mblmin, mblmax) use 'lambda' 
+    units, but you may use the QP2LAMBDA constant to 
+    easily convert from 'q' units:
+
+ffmpeg -i src.ext -lmax 21*QP2LAMBDA dst.ext
+
+`-rc_init_cplx complexity'
+    initial complexity for single pass encoding 
+`-b_qfactor factor'
+    qp factor between P- and B-frames 
+`-i_qfactor factor'
+    qp factor between P- and I-frames 
+`-b_qoffset offset'
+    qp offset between P- and B-frames 
+`-i_qoffset offset'
+    qp offset between P- and I-frames 
+`-rc_eq equation'
+    Set rate control equation (see section 3.10 
+    FFmpeg formula evaluator) (default = tex^qComp). 
+`-rc_override override'
+    rate control override for specific intervals 
+`-me_method method'
+    Set motion estimation method to method. Available 
+    methods are (from lowest to best quality):
+
+    `zero'
+        Try just the (0, 0) vector. 
+    `phods'
+    `log'
+    `x1'
+    `hex'
+    `umh'
+    `epzs'
+        (default method) 
+    `full'
+        exhaustive search (slow and marginally 
+        better than epzs) 
+
+`-dct_algo algo'
+    Set DCT algorithm to algo. Available values are:
+
+    `0'
+        FF_DCT_AUTO (default) 
+    `1'
+        FF_DCT_FASTINT 
+    `2'
+        FF_DCT_INT 
+    `3'
+        FF_DCT_MMX 
+    `4'
+        FF_DCT_MLIB 
+    `5'
+        FF_DCT_ALTIVEC 
+
+`-idct_algo algo'
+    Set IDCT algorithm to algo. Available values are:
+
+    `0'
+        FF_IDCT_AUTO (default) 
+    `1'
+        FF_IDCT_INT 
+    `2'
+        FF_IDCT_SIMPLE 
+    `3'
+        FF_IDCT_SIMPLEMMX 
+    `4'
+        FF_IDCT_LIBMPEG2MMX 
+    `5'
+        FF_IDCT_PS2 
+    `6'
+        FF_IDCT_MLIB 
+    `7'
+        FF_IDCT_ARM 
+    `8'
+        FF_IDCT_ALTIVEC 
+    `9'
+        FF_IDCT_SH4 
+    `10'
+        FF_IDCT_SIMPLEARM 
+
+`-er n'
+    Set error resilience to n.
+
+    `1'
+        FF_ER_CAREFUL (default) 
+    `2'
+        FF_ER_COMPLIANT 
+    `3'
+        FF_ER_AGGRESSIVE 
+    `4'
+        FF_ER_VERY_AGGRESSIVE 
+
+`-ec bit_mask'
+    Set error concealment to bit_mask. bit_mask is a 
+    bit mask of the following values:
+
+    `1'
+        FF_EC_GUESS_MVS (default = enabled) 
+    `2'
+        FF_EC_DEBLOCK (default = enabled) 
+
+`-bf frames'
+    Use 'frames' B-frames (supported for MPEG-1, 
+    MPEG-2 and MPEG-4). 
+`-mbd mode'
+    macroblock decision
+
+    `0'
+        FF_MB_DECISION_SIMPLE: Use mb_cmp (cannot 
+        change it yet in FFmpeg). 
+    `1'
+        FF_MB_DECISION_BITS: Choose the one which 
+        needs the fewest bits. 
+    `2'
+        FF_MB_DECISION_RD: rate distortion 
+
+`-4mv'
+    Use four motion vector by macroblock (MPEG-4 only). 
+`-part'
+    Use data partitioning (MPEG-4 only). 
+`-bug param'
+    Work around encoder bugs that are not auto-detected. 
+`-strict strictness'
+    How strictly to follow the standards. 
+`-aic'
+    Enable Advanced intra coding (h263+). 
+`-umv'
+    Enable Unlimited Motion Vector (h263+) 
+`-deinterlace'
+    Deinterlace pictures. 
+`-ilme'
+    Force interlacing support in encoder (MPEG-2 and 
+    MPEG-4 only). Use this option if your input file is 
+    interlaced and you want to keep the interlaced 
+    format for minimum losses. The alternative is to 
+    deinterlace the input stream with `-deinterlace', 
+    but deinterlacing introduces losses. 
+`-psnr'
+    Calculate PSNR of compressed frames. 
+`-vstats'
+    Dump video coding statistics to `vstats_HHMMSS.log'. 
+`-vstats_file file'
+    Dump video coding statistics to file. 
+`-vhook module'
+    Insert video processing module. module contains the 
+    module name and its parameters separated by spaces. 
+`-top n'
+    top=1/bottom=0/auto=-1 field first 
+`-dc precision'
+    Intra_dc_precision. 
+`-vtag fourcc/tag'
+    Force video tag/fourcc. 
+`-qphist'
+    Show QP histogram. 
+`-vbsf bitstream filter'
+    Bitstream filters available are "dump_extra", 
+    "remove_extra", "noise". 

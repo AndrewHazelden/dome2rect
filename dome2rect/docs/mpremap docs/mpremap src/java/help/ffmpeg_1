@@ -1,0 +1,110 @@
+3. Invocation
+3.1 Syntax
+
+The generic syntax is:
+
+ffmpeg [[infile options][`-i' infile]]... 
+           {[outfile options] outfile}...
+
+As a general rule, options are applied to the next 
+specified file. Therefore, order is important, and 
+you can have the same option on the command line multiple 
+times. Each occurrence is then applied to the next input 
+or output file.
+
+* To set the video bitrate of the output file to 64kbit/s:
+
+ffmpeg -i input.avi -b 64k output.avi
+
+* To force the frame rate of the input and output file to 24 fps:
+
+ffmpeg -r 24 -i input.avi output.avi
+
+* To force the frame rate of the output file to 24 fps:
+
+ffmpeg -i input.avi -r 24 output.avi
+
+* To force the frame rate of input file to 1 fps and the 
+output file to 24 fps:
+
+ffmpeg -r 1 -i input.avi -r 24 output.avi
+
+The format option may be needed for raw input files.
+
+By default, FFmpeg tries to convert as losslessly as 
+possible: It uses the same audio and video parameters 
+for the outputs as the one specified for the inputs.
+3.2 Main options
+
+`-L'
+    Show license. 
+`-h'
+    Show help. 
+`-version'
+    Show version. 
+`-formats'
+    Show available formats, codecs, protocols, ... 
+`-f fmt'
+    Force format. 
+`-i filename'
+    input filename 
+`-y'
+    Overwrite output files. 
+`-t duration'
+    Restrict the transcoded/captured video sequence to 
+    the duration specified in seconds. hh:mm:ss[.xxx] 
+    syntax is also supported. 
+`-fs limit_size'
+    Set the file size limit. 
+`-ss position'
+    Seek to given time position in seconds. 
+    hh:mm:ss[.xxx] syntax is also supported. 
+`-itsoffset offset'
+    Set the input time offset in seconds. 
+    [-]hh:mm:ss[.xxx] syntax is also supported. This 
+    option affects all the input files that follow it. 
+    The offset is added to the timestamps of the input 
+    files. Specifying a positive offset means that the 
+    corresponding streams are delayed by 'offset' seconds. 
+`-title string'
+    Set the title. 
+`-timestamp time'
+    Set the timestamp. 
+`-author string'
+    Set the author. 
+`-copyright string'
+    Set the copyright. 
+`-comment string'
+    Set the comment. 
+`-album string'
+    Set the album. 
+`-track number'
+    Set the track. 
+`-year number'
+    Set the year. 
+`-v verbose'
+    Control amount of logging. 
+`-target type'
+    Specify target file type ("vcd", "svcd", "dvd", "dv", 
+    "dv50", "pal-vcd", "ntsc-svcd", ... ). All the format 
+    options (bitrate, codecs, buffer sizes) are then set 
+    automatically. You can just type:
+
+ffmpeg -i myfile.avi -target vcd /tmp/vcd.mpg
+
+    Nevertheless you can specify additional options as 
+    long as you know they do not conflict with the standard, 
+    as in:
+
+ffmpeg -i myfile.avi -target vcd -bf 2 /tmp/vcd.mpg
+
+`-dframes number'
+    Set the number of data frames to record. 
+`-scodec codec'
+    Force subtitle codec ('copy' to copy stream). 
+`-newsubtitle'
+    Add a new subtitle stream to the current output stream. 
+`-slang code'
+    Set the ISO 639 language code (3 letters) of the current 
+    subtitle stream. 
+

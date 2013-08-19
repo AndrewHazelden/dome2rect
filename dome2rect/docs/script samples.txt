@@ -1,0 +1,21 @@
+
+# Defish 960x540px output / 55 degree pitch:
+p f1 w960 h540 v90
+o f10 v180 r0 y0 p55
+
+# Defish image to a 1080p HD format:
+#p f0 w1920 h1080 v90 
+#o f10 v180 r0 y0 p55
+
+# Defish image to a 1920px / 2.35 ratio HD format:
+#p f0 w1920 h800 v90
+#o f10 v180 r0 y0 p55
+
+# Defish image to a 960px / 2.35 ratio HD format:
+#p f0 w960 h400 v90
+#o f10 v180 r0 y0 p55
+
+# Rotate a fisheye image 45 degrees:
+#p f10 w1080 h1080 v180
+#o f10 v180 r45 y0 p0
+

@@ -1,0 +1,121 @@
+Transformation Scripts
+======================
+
+The script contains one line starting with the
+letter 'p' and arbitrary many lines starting with 'o'.
+o-lines are read one for each input frame. If there
+are input images available while there are no more
+'o'-lines left, the script is reread from the start.
+To accomplish a conversion with fixed parameters 
+we therefor need just a two-line script for
+arbitrary many frames.
+
+'p'-lines describe target format and 'o'-lines 
+source format in 'insert'-mode. The roles are
+reversed in 'extract'-mode.
+
+Example:
+
+p f1 w320 h300 v180  C0,320,0,240 
+o f3 r-2.5 p12 y0 v173
+
+In this case we remap frames made with a fisheye lens 
+(f3) with 173° field-of-view (v173) to cylinder format (f1)
+with 180° field-of-view (v180). We rotate the images by 
+-2.5° (r-2.5), and tilt by 12° (p12). The target frames 
+are 320x240 pixels large and cropped from a 320x300 pixel 
+size (w320 h300  C0,320,0,240). This cropping simulates 
+a shift lens straightening vertical lines.
+
+The roles of o- and p-lines are reversed in 'extract'-mode.
+The input-frames are characterized by the single p-line, 
+while each outputframe corresponds to one o-line. Again, 
+if there are fewer o-lines than frames, the script is
+restarted. This mode is better suited for extracting 
+virtual camera moves, see examples below. The pan/tilt/rotation 
+parameters can be deduced by viewing source frames 
+with PTViewer.
+
+Options in the script are specified by an identifying letter 
+followed by the value of the corresponding option. 
+This is a list of supported options. 
+
+f           Projection  format, one of 
+                 0 (rectilinear)
+                 1 (cylinder)
+                 2 (equirectangular in p-, fisheye in o-line) 
+                 3 (fisheye-equidistant)
+                 4 (equirectangular)
+                10 (fisheye-equisolid) 
+w           Width in pixel, required only for destination image
+h           Height in pixel, required only for destination pixel
+v           Horizontal field of view angle (in degrees).
+y           Yaw (pan) angle in degrees (o-line only).
+p           Pitch (tilt) angle in degrees (o-line only).
+r           Rotation in degrees (o-line only).
+a,b,c       Radial distortion parameters. Pixels are 
+            shifted radially according to a third order
+            polynomial with coefficients a,b,c (o-line only).
+d,e         horizontal and vertical shift (in pixels) (o-line only).
+g,t         horizontal and vertical shear (in pixels) (o-line only).
+C           Crop rectangle, left,right,top,bottom pixelposition 
+            (comma-separated, default: no crop).
+n           Name, usually ignored except if "skip" (= skip frame) 
+            and "same" (= use previous frame again) (o-line only).
+
+Macros:
+=======
+Specifying per-frame transformation parameters is tedious. A few 
+standard options are therefor implemented as macros which are 
+expanded by the build-in preprocessor
+
+LOOP(n)     Repeat the following block in brackets n-times.
+
+Example:
+LOOP(100){
+o f0 v70 w640 h480 y10
+o f0 v70 w640 h480 y11
+o f0 v70 w640 h480 y12
+o f0 v70 w640 h480 y11
+}
+repeates these 4 lines 100-times. Please use brackets 
+exactly as shown.
+
+
+SPLINE(n1,n2,...)   Connects start, intermediate and 
+           end values of pan, tilt, rotation and zoom 
+           level using a smooth spline function with 
+           specified number of frames. 
+Example:
+o f0 v70 w640 h480 y0 p0 r0
+SPLINE(30,100,240,100)
+o f0 v75 w640 h480 y10 p5 r6
+o f0 v60 w640 h480 y20 p10 r10
+o f0 v55 w640 h480 y30 p30 r5
+o f0 v50 w640 h480 y50 p10 r3
+
+In this example we start with the first o-line, then 
+use 30 frames to smoothly move to the second o-line, 
+then 100 frames to the third, etc. Any number of 
+intermediate points may be connected by the spline.
+
+GRID(p1,p2,np,yl,yr,nh) Create a grid of prerendered 
+          images for use in object viewer. 
+          p1,p2 - pitch down/up
+          np -number of pitch positions.
+          y1,y2 - yaw left/right.
+          nh -number of yaw positions.
+
+Example:
+p f2 v360
+GRID(-90,90,37,0,355,72)
+o f0 w180 h120 v75 r0 y0 p0 
+
+Using 'extract'-mode, this script creates
+37x72 frames with 5 degrees spacing vertically
+and horizontally which cover the full spherical
+view. They can be used to display panoramic
+views in Object-viewers.
+                  
+SKIP(n)   Skips n frames.
+

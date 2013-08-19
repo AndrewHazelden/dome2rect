@@ -1,0 +1,36 @@
+LANGUAGE 0x07 , 0x01 
+#pragma code_page(1252)
+
+1 VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040704b0"
+        BEGIN
+            VALUE "CompanyName", " \0"
+            VALUE "FileDescription", "mpremap\0"
+            VALUE "FileVersion", "0.2a\0"
+            VALUE "InternalName", "mpremap\0"
+            VALUE "LegalCopyright", "Copyright © 2007 Helmut Dersch\0"
+            VALUE "OriginalFilename", "mpremap.exe\0"
+            VALUE "ProductName", "  mpremap\0"
+            VALUE "ProductVersion", "0.2a\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x407, 1200
+    END
+END
+

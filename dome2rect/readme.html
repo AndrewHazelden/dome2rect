@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>readme</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: 29d1c5bc36da364ad5aa86946d420b7bbc54a253 */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>Dome2rect v1.0 Alpha- Aug 19, 2013</h1>
+<p>by Andrew Hazelden</p>
+<h2>Overview</h2>
+<p>Dome2rect is a command line script that uses the open source Panotool library + MPRemap  application to automate the process of converting image sequences between multiple panoramic formats. I created this script because I wanted to make it simpler to convert a fulldome movie trailer into a &quot;flat screeen&quot; rectilinear format for posting on sites like YouTube.</p>
+<h2>Installation</h2>
+<p>For the software to work it has to be expanded and moved to the folder:  </p>
+<blockquote>
+<p>C:\dome2rect</p>
+</blockquote>
+<h2>Image Conversion Example</h2>
+<p>The dome2rect conversion process works by reading fulldome formatted imagery from the <strong>C:\dome2rect\input</strong> folder and saving the converted rectilinear frames to the <strong>C:\dome2rect\output</strong> folder. Let's convert the included fulldome angular fisheye sample image sequence named (<strong>zosma.0000.jpg</strong> - <strong>zosma.0035.jpg</strong>) to a flattened rectilinear format.     </p>
+<p><strong>Fulldome Sample Image</strong><br />
+<img src="docs/images/zosma_input.jpg" alt="fulldome image sample" />  </p>
+<p><strong>Step 1.</strong>  Edit the batch script file dome2rect.bat using a text editor. Type in your current input and output image filenames.</p>
+<p><img src="docs/images/editing_the_script.png" alt="Edit the script." />  </p>
+<p><strong>Step 2.</strong>  Double click on the dome2rect.bat program to start the conversion process.</p>
+<p><img src="docs/images/running_the_script.png" alt="Run the dome2rect script." />  </p>
+<p><strong>Step 3.</strong> The script will start and begin converting the imagery. A progress screen displays the status as the mpremap utility converts the current frame.</p>
+<p><img src="docs/images/dome2rect_in_action.png" alt="dome2rect conversion process." />  </p>
+<p><strong>Step 4.</strong> With the conversion proceess complete we can review the image sequence that was generated in the &quot;output&quot; folder. If you are running Windows 7 you can use the included review.bat movie viewer.</p>
+<p><strong>dome2rect.bat Output Image</strong>:<br />
+<img src="docs/images/zosma_output.jpg" alt="This image is the output from running a dome to rectillinear conversion." /><br />
+This image was created using a dome to rectillinear conversion.</p>
+<hr />
+<h2>Batch Script Notes</h2>
+<p>Currently the tool is an early alpha stage and will be improved over time.  Right now the only image format enabled for input/output is .jpg files and a unix .pnm image format. In the future all the common image/video formats could be supported since the FFMPEG library is used for format conversions.</p>
+<p>I created the following example .bat scripts to show what is possible:</p>
+<p><strong>dome2rect.bat</strong><br />
+Converts a fisheye frame to a rectilinear image</p>
+<p><strong>latlong2dome.bat</strong><br />
+Converts a latitude/longitude to a fulldome image</p>
+<p><strong>latlong2rect.bat</strong><br />
+Converts a latitude/longitude to a rectilinear image</p>
+<p><strong>review.bat</strong><br />
+Simple playback program to view the image output. This tool uses ffmpeg's playback tool and requires Windows 7 to run.</p>
+<h2>PT Conversion Scripts</h2>
+<p>Internally the image projections are done using the mpremap library by Helmut Dersch:
+<a href="http://webuser.fh-furtwangen.de/~dersch/mp/MotionPanoramas.html">http://webuser.fh-furtwangen.de/~dersch/mp/MotionPanoramas.html</a></p>
+<p>The conversion scripts are stored in the <strong>scripts/</strong> folder and are written using the Panotools PT Stitcher syntax:
+<a href="http://wiki.panotools.org/PTStitcher">http://wiki.panotools.org/PTStitcher</a></p>
+<p>This example panotools conversion script takes an equidistanst fisheye image and converts it to a 1920x1080p rectiliner image output. The image is rolled -10 degrees, and pitched 55 degrees.</p>
+<pre><code># Defish fulldome image to a 1080p HD format:  
+p f0 w1920 h1080 v90  
+o f3 v180 r-10 y0 p55  
+</code></pre>
+<p>This example panotools conversion script takes an latitude longitude (equirectangular) image and converts it to a 1920x1080p rectiliner image output.</p>
+<pre><code># Defish latlong image to a 1080p HD format:
+p f0 w1920 h1080 v90
+o f4 v360 r0 y0 p0
+</code></pre>
+<p>Here is a quick summary of the PT Stitcher syntax:</p>
+<pre><code>'p' = Destination Image Attributes
+
+'p' Attributes:
+C0,960,420,960 = Crop Dimensions left,right,top,bottom
+f0 = projection mode  0 = rectilinear
+f1 = projection mode  1 = cylindrical
+
+w1920 = destination width 1920 px
+h1080 = destination height 1080 px
+v90 = horizontal field of view = 90 degrees
+
+'o' = Source Image Attributes
+
+'o' Attributes:
+f3 = projection mode 3 = equidistant fisheye
+f5 = projection mode 5 = circular fisheye
+f10 = projection mode 10 = equisolid fisheye
+
+r-10 = roll the image -10 degrees (left)
+y22 = yaw the image 22 degrees
+p45 = pitch the image 45 degrees
+
+b0.1 or b0.5 = barrel distort correct = useful ranges from -1.0 to 1.0
+</code></pre>
+<h3>Changing Input &amp; Output File Names</h3>
+<p>To change the name of the input and output files you can edit the .bat scripts using a plain text editor. All image sequences start on frame number 0 (eg. 0.jpg)  </p>
+<p>To convert a single frame image enter the exact image name. (eg. image.jpg) </p>
+<p>To convert an an unpadded image sequence use the value %%d.jpg (eg. 9.jpg )</p>
+<p>To convert an a 4 digit padded image sequence use the value %%.4d.jpg  (eg: 0009.jpg)  </p>
+<p>If you want the dome2rect script to process a single frame for testing change the following code:  </p>
+<blockquote>
+<p>@set ptscript=dome2rect<br />
+@set input=input\zosma.0001.jpg<br />
+@set output=output\sequence.%%d.jpg  
+</p>
+</blockquote>
+<p>If you want the dome2rect script to process a 4 digit padded image sequence change the following code:   </p>
+<blockquote>
+<p>@set ptscript=dome2rect<br />
+@set input=input\zosma.%%.4d.jpg<br />
+@set output=output\sequence.%%d.jpg  
+</p>
+</blockquote>
+<hr />
+<h2>About the Tool</h2>
+<p>I was inspired to make this after reading Jason Fletcher's blog post on converting fulldome movies for display on flat screens:
+<a href="http://thefulldomeblog.com/2013/06/29/defishing-for-flat-screens/">http://thefulldomeblog.com/2013/06/29/defishing-for-flat-screens/</a></p>
+<p>Cheers,<br />
+Andrew Hazelden  </p>
+<p>eMail: <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#x61;n&#x64;&#x72;&#x65;&#x77;&#x40;&#97;&#x6e;d&#114;&#x65;&#x77;&#104;&#x61;&#122;&#101;&#x6c;&#x64;&#x65;&#110;&#x2e;&#99;&#x6f;&#109;">&#x61;&#110;&#x64;&#114;&#101;w&#64;a&#110;&#100;&#114;&#101;&#119;&#x68;&#x61;zel&#100;&#x65;&#x6e;&#46;&#99;&#111;&#109;</a> <br />
+Blog: <a href="http://www.andrewhazelden.com">http://www.andrewhazelden.com</a><br />
+Twitter: <a href="https://twitter.com/andrewhazelden">@andrewhazelden</a><br />
+Google+: <a href="https://plus.google.com/u/0/105694670378845894137">https://plus.google.com/u/0/105694670378845894137</a></p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

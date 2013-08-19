@@ -1,0 +1,9 @@
+# Experimental Animated Transformations- output loops forever
+
+#Create a 960x540px output with a 90 degree FOV
+#p f1 / p55 default  
+p f1 w960 h540 v90
+
+o f3 v180 r0 y0 p55
+SPLINE(35)
+o f3 v180 r-22 y0 p55 nsame

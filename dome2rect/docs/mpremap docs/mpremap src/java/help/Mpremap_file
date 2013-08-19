@@ -1,0 +1,31 @@
+Mpremap: File-Menu
+==================
+
+1. Input Video/Image:
+---------------------
+
+Select source video file or image. Either a single
+image file (JPEG, ppm, ...) or almost any video-format 
+is suitable. For video-input please also select 
+'use_ffmpeg_for_input' in the 'Ffmpeg' menu.
+
+
+2. Save as:
+-----------
+
+Set output file name. If 'use_ffmpeg_for_output'
+is set, choose a name with extension matching
+the selected video-format (see Ffmpeg-menu).
+Otherwise, single JPEG-encoded frames are written
+if this name ends with ".jpg". All other names 
+lead to "ppm"-encoded frames.Consecutive numbering 
+of frames is achieved by embedding the sequence "%d"
+somwhere in the name, which will be replaced by the 
+framenumber.
+
+
+3. Exit:
+--------
+
+Quit applications. Settings are saved to a 
+preferences file named "MPRemap.preferences".

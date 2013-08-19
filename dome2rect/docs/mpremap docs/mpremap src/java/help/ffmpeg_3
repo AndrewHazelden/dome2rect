@@ -1,0 +1,219 @@
+3.5 Audio Options
+
+`-aframes number'
+    Set the number of audio frames to record. 
+`-ar freq'
+    Set the audio sampling frequency (default = 44100 Hz). 
+`-ab bitrate'
+    Set the audio bitrate in bit/s (default = 64k). 
+`-ac channels'
+    Set the number of audio channels (default = 1). 
+`-an'
+    Disable audio recording. 
+`-acodec codec'
+    Force audio codec to codec. Use the copy special 
+    value to specify that the raw codec data must be 
+    copied as is. 
+`-newaudio'
+    Add a new audio track to the output file. If you 
+    want to specify parameters, do so before -newaudio 
+    (-acodec, -ab, etc..). Mapping will be done 
+    automatically, if the number of output streams 
+    is equal to the number of input streams, else it 
+    will pick the first one that matches. You can 
+    override the mapping using -map as usual. 
+    Example:
+
+ffmpeg -i file.mpg -vcodec copy -acodec ac3 -ab 384k test.mpg -acodec mp2 -ab 192k -newaudio
+
+`-alang code'
+    Set the ISO 639 language code (3 letters) of the 
+    current audio stream. 
+
+3.6 Advanced Audio options:
+
+`-atag fourcc/tag'
+    Force audio tag/fourcc. 
+`-absf bitstream filter'
+    Bitstream filters available are "dump_extra", 
+    "remove_extra", "noise", "mp3comp", "mp3decomp". 
+
+3.7 Subtitle options:
+
+`-scodec codec'
+    Force subtitle codec ('copy' to copy stream). 
+`-newsubtitle'
+    Add a new subtitle stream to the current output stream. 
+`-slang code'
+    Set the ISO 639 language code (3 letters) of the 
+    current subtitle stream. 
+
+3.8 Audio/Video grab options
+
+`-vc channel'
+    Set video grab channel (DV1394 only). 
+`-tvstd standard'
+    Set television standard (NTSC, PAL (SECAM)). 
+`-isync'
+    Synchronize read on input. 
+
+3.9 Advanced options
+
+`-map input stream id[:input stream id]'
+    Set stream mapping from input streams to output 
+    streams. Just enumerate the input streams in the 
+    order you want them in the output. [input stream id] 
+    sets the (input) stream to sync against. 
+`-map_meta_data outfile:infile'
+    Set meta data information of outfile from infile. 
+`-debug'
+    Print specific debug info. 
+`-benchmark'
+    Add timings for benchmarking. 
+`-dump'
+    Dump each input packet. 
+`-hex'
+    When dumping packets, also dump the payload. 
+`-bitexact'
+    Only use bit exact algorithms (for codec testing). 
+`-ps size'
+    Set packet size in bits. 
+`-re'
+    Read input at native frame rate. Mainly used to 
+    simulate a grab device. 
+`-loop_input'
+    Loop over the input stream. Currently it works 
+    only for image streams. This option is used for 
+    automatic FFserver testing. 
+`-loop_output number_of_times'
+    Repeatedly loop output for formats that support 
+    looping such as animated GIF (0 will loop the 
+    output infinitely). 
+`-threads count'
+    Thread count. 
+`-vsync parameter'
+    Video sync method. Video will be stretched/squeezed 
+    to match the timestamps, it is done by duplicating 
+    and dropping frames. With -map you can select from 
+    which stream the timestamps should be taken. You 
+    can leave either video or audio unchanged and sync 
+    the remaining stream(s) to the unchanged one. 
+`-async samples_per_second'
+    Audio sync method. "Stretches/squeezes" the audio 
+    stream to match the timestamps, the parameter is 
+    the maximum samples per second by which the audio 
+    is changed. -async 1 is a special case where only 
+    the start of the audio stream is corrected without 
+    any later correction. 
+`-copyts'
+    Copy timestamps from input to output. 
+`-shortest'
+    Finish encoding when the shortest input stream ends. 
+`-dts_delta_threshold'
+    Timestamp discontinuity delta threshold. 
+`-muxdelay seconds'
+    Set the maximum demux-decode delay. 
+`-muxpreload seconds'
+    Set the initial demux-decode delay. 
+
+3.10 FFmpeg formula evaluator
+
+When evaluating a rate control string, FFmpeg uses an 
+internal formula evaluator.
+
+The following binary operators are available: +, -, *, /, ^.
+
+The following unary operators are available: +, -, (...).
+
+The following functions are available:
+
+sinh(x)
+cosh(x)
+tanh(x)
+sin(x)
+cos(x)
+tan(x)
+exp(x)
+log(x)
+squish(x)
+gauss(x)
+abs(x)
+max(x, y)
+min(x, y)
+gt(x, y)
+lt(x, y)
+eq(x, y)
+bits2qp(bits)
+qp2bits(qp)
+
+The following constants are available:
+
+PI
+E
+iTex
+pTex
+tex
+mv
+fCode
+iCount
+mcVar
+var
+isI
+isP
+isB
+avgQP
+qComp
+avgIITex
+avgPITex
+avgPPTex
+avgBPTex
+avgTex
+
+3.11 Protocols
+
+The filename can be `-' to read from standard input 
+or to write to standard output.
+
+FFmpeg also handles many protocols specified with 
+an URL syntax.
+
+Use 'ffmpeg -formats' to see a list of the supported 
+protocols.
+
+The protocol http: is currently used only to 
+communicate with FFserver (see the FFserver documentation). 
+When FFmpeg will be a video player it will also be 
+used for streaming :-)
+4. Tips
+
+    * For streaming at very low bitrate application, use 
+    a low frame rate and a small GOP size. This is 
+    especially true for RealVideo where the Linux player 
+    does not seem to be very fast, so it can miss frames. 
+    An example is:
+
+ffmpeg -g 3 -r 3 -t 10 -b 50k -s qcif -f rv10 /tmp/b.rm
+
+    * The parameter 'q' which is displayed while encoding 
+    is the current quantizer. The value 1 indicates that 
+    a very good quality could be achieved. The value 31 
+    indicates the worst quality. If q=31 appears too often, 
+    it means that the encoder cannot compress enough to 
+    meet your bitrate. You must either increase the bitrate, 
+    decrease the frame rate or decrease the frame size.
+    * If your computer is not fast enough, you can speed 
+    up the compression at the expense of the compression 
+    ratio. You can use '-me zero' to speed up motion 
+    estimation, and '-intra' to disable motion estimation 
+    completely (you have only I-frames, which means it is 
+    about as good as JPEG compression).
+    * To have very low audio bitrates, reduce the sampling 
+    frequency (down to 22050 kHz for MPEG audio, 22050 or 11025 for AC3).
+    * To have a constant quality (but a variable bitrate), 
+    use the option '-qscale n' when 'n' is between 1 
+    (excellent quality) and 31 (worst quality).
+    * When converting video files, you can use the 
+    '-sameq' option which uses the same quality factor 
+    in the encoder as in the decoder. It allows almost 
+    lossless encoding. 
+

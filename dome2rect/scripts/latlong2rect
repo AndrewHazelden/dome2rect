@@ -1,0 +1,51 @@
+# Convert a latitude/longitude to a rectilinear image
+# Output resolution: 1920x1080 px
+
+#####################
+# 'p' = Destination Image Attributes
+#
+# 'p' Attributes:
+# C0,960,420,960 = Crop Dimensions left,right,top,bottom
+# f0 = projection mode  0 = rectilinear
+# f1 = projection mode  1 = cylindrical
+
+# w1920 = destination width 1920 px
+# h1080 = destination height 1080 px
+# v90 = horizontal field of view = 90 degrees
+
+#####################
+# 'o' = Source Image Attributes
+#
+# 'o' Attributes:
+# f3 = projection mode 3 = equidistant fisheye
+# f5 = projection mode 5 = circular fisheye
+# f10 = projection mode 10 = equisolid fisheye
+
+# f4 = projection mode 4 = equirectagular
+
+# r-10 = roll the image -10 degrees (left)
+# y22 = yaw the image 22 degrees
+# p45 = pitch the image 45 degrees
+
+#p90 = faces downwards
+#p-90 = faces upwards
+
+# b0.1 or b0.5 = barrel distort correct = useful ranges from -1.0 to 1.0
+#####################
+
+# You can pick one of the following examples:
+
+# Defish image to a 1080p HD format with barrel distortion:
+p f0 w1920 h1080 v130
+o f4 v360 r0 y0 p0
+
+# Defish image to a 1080p HD format:
+#p f0 w1920 h1080 v90
+#o f4 v360 r0 y0 p0
+
+# Defish 960x540px output:
+#p f0 w960 h540 v90
+#o f4 v360 r0 y0 p0
+
+
+
