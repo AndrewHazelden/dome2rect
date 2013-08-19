@@ -4,6 +4,8 @@ by Andrew Hazelden
 ## Overview ##
 Dome2rect is a command line script that uses the open source Panotool library + MPRemap  application to automate the process of converting image sequences between multiple panoramic formats. I created this script because I wanted to make it simpler to convert a fulldome movie trailer into a "flat screeen" rectilinear format for posting on sites like YouTube.
 
+**Note:** Windows 7 is required to use the tools.
+
 ## Installation ##
 
 For the software to work it has to be expanded and moved to the folder:  
@@ -25,7 +27,7 @@ The dome2rect conversion process works by reading fulldome formatted imagery fro
 
 ![Run the dome2rect script.](docs/images/running_the_script.png)  
 
-**Step 3.** The script will start and begin converting the imagery. A progress screen displays the status as the mpremap utility converts the current frame.
+**Step 3.** The script will start and begin converting the imagery. A progress screen displays the status as the mpremap utility converts the current frame. (When the program gets to the end of your image sequence you will get a generic warning indicating mpremap couldn't find the next image.)
 
 ![dome2rect conversion process.](docs/images/dome2rect_in_action.png)  
 
@@ -52,7 +54,7 @@ Converts a latitude/longitude to a fulldome image
 Converts a latitude/longitude to a rectilinear image
 
 **review.bat**  
-Simple playback program to view the image output. This tool uses ffmpeg's playback tool and requires Windows 7 to run.
+Simple playback program to view the image output. This tool uses ffmpeg's playback tool.
 
 ## PT Conversion Scripts ##
 
