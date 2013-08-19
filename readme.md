@@ -2,9 +2,16 @@
 by Andrew Hazelden
 
 ## Overview ##
-Dome2rect is a command line script that uses the open source Panotool library + MPRemap  application to automate the process of converting image sequences between multiple panoramic formats. I created this script because I wanted to make it simpler to convert a fulldome movie trailer into a "flat screeen" rectilinear format for posting on sites like YouTube.
+Dome2rect is a command line script that uses the open source Panotool library + MPRemap  application to automate the process of converting image sequences between multiple panoramic formats. I created this script because I wanted to make it simpler to convert a fulldome movie trailer into a "flat screen" rectilinear format for posting on sites like YouTube.
 
 **Note:** Windows 7 is required to use the tools.
+
+## Download ##
+
+The dome2rect program is an open source program that is a free download. A sample fulldome image sequence is included.
+
+You can download the latest version from the dome2rect page:   
+[http://www.andrewhazelden.com/blog/2013/08/dome2rect](http://www.andrewhazelden.com/blog/2013/08/dome2rect)
 
 ## Installation ##
 
@@ -31,27 +38,27 @@ The dome2rect conversion process works by reading fulldome formatted imagery fro
 
 ![dome2rect conversion process.](docs/images/dome2rect_in_action.png)  
 
-**Step 4.** With the conversion proceess complete we can review the image sequence that was generated in the "output" folder. If you are running Windows 7 you can use the included review.bat movie viewer.
+**Step 4.** When the conversion process is complete we can review the image sequence that was generated in the "output" folder. If you are running Windows 7 you can use the included review.bat movie viewer.
 
 **dome2rect.bat Output Image**:  
 ![This image is the output from running a dome to rectillinear conversion.](docs/images/zosma_output.jpg)  
-This image was created using a dome to rectillinear conversion.
+This image was created using a dome to rectilinear conversion.
 
 * * *
 
 ## Batch Script Notes ##
-Currently the tool is an early alpha stage and will be improved over time.  Right now the only image format enabled for input/output is .jpg files and a unix .pnm image format. In the future all the common image/video formats could be supported since the FFMPEG library is used for format conversions.
+The tool is an early alpha release and will be improved over time.  Right now the only image format enabled for input/output is .jpg files and a UNIX .pnm image format. In the future all the common image/video formats could be supported since the FFMPEG library is used for format conversions.
 
 I created the following example .bat scripts to show what is possible:
 
 **dome2rect.bat**  
-Converts a fisheye frame to a rectilinear image
+Converts a fisheye frame to a rectilinear image.
 
 **latlong2dome.bat**  
-Converts a latitude/longitude to a fulldome image
+Converts a latitude/longitude (equirectangular) frame to a fulldome image.
 
 **latlong2rect.bat**  
-Converts a latitude/longitude to a rectilinear image
+Converts a latitude/longitude (equirectangular) frame to a rectilinear image.
 
 **review.bat**  
 Simple playback program to view the image output. This tool uses ffmpeg's playback tool.
@@ -64,18 +71,25 @@ Internally the image projections are done using the mpremap library by Helmut De
 The conversion scripts are stored in the **scripts/** folder and are written using the Panotools PT Stitcher syntax:
 [http://wiki.panotools.org/PTStitcher](http://wiki.panotools.org/PTStitcher)
 
-This example panotools conversion script takes an equidistanst fisheye image and converts it to a 1920x1080p rectiliner image output. The image is rolled -10 degrees, and pitched 55 degrees.
+This example panotools conversion script takes an equidistanst fisheye image and converts it to a 1920x1080p rectilinear image output. The image is rolled -10 degrees, and pitched 55 degrees.
 
 <pre><code># Defish fulldome image to a 1080p HD format:  
 p f0 w1920 h1080 v90  
 o f3 v180 r-10 y0 p55  
 </code></pre>
 
-This example panotools conversion script takes an latitude longitude (equirectangular) image and converts it to a 1920x1080p rectiliner image output.
+This example panotools conversion script takes an latitude longitude (equirectangular) image and converts it to a 1920x1080p rectilinear image output.
 
 <pre><code># Defish latlong image to a 1080p HD format:
 p f0 w1920 h1080 v90
 o f4 v360 r0 y0 p0
+</code></pre>
+
+This example panotools conversion script takes an latitude longitude (equirectangular) image and converts it to a 1080x1080 fulldome angular fisheye image output. The image is pitched -90 degrees.
+
+<pre><code># latlong to fulldome fisheye 1080x1080 format:
+p f3 w1080 h1080 v180
+o f4 v360 r0 y0 p-90
 </code></pre>
 
 

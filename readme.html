@@ -276,7 +276,12 @@ img {
 <h1>Dome2rect v1.0 Alpha- Aug 19, 2013</h1>
 <p>by Andrew Hazelden</p>
 <h2>Overview</h2>
-<p>Dome2rect is a command line script that uses the open source Panotool library + MPRemap  application to automate the process of converting image sequences between multiple panoramic formats. I created this script because I wanted to make it simpler to convert a fulldome movie trailer into a &quot;flat screeen&quot; rectilinear format for posting on sites like YouTube.</p>
+<p>Dome2rect is a command line script that uses the open source Panotool library + MPRemap  application to automate the process of converting image sequences between multiple panoramic formats. I created this script because I wanted to make it simpler to convert a fulldome movie trailer into a &quot;flat screen&quot; rectilinear format for posting on sites like YouTube.</p>
+<p><strong>Note:</strong> Windows 7 is required to use the tools.</p>
+<h2>Download</h2>
+<p>The dome2rect program is an open source program that is a free download. A sample fulldome image sequence is included.</p>
+<p>You can download the latest version from the dome2rect page: <br />
+<a href="http://www.andrewhazelden.com/blog/2013/08/dome2rect">http://www.andrewhazelden.com/blog/2013/08/dome2rect</a></p>
 <h2>Installation</h2>
 <p>For the software to work it has to be expanded and moved to the folder:  </p>
 <blockquote>
@@ -292,36 +297,41 @@ img {
 <p><img src="docs/images/running_the_script.png" alt="Run the dome2rect script." />  </p>
 <p><strong>Step 3.</strong> The script will start and begin converting the imagery. A progress screen displays the status as the mpremap utility converts the current frame. (When the program gets to the end of your image sequence you will get a generic warning indicating mpremap couldn't find the next image.)</p>
 <p><img src="docs/images/dome2rect_in_action.png" alt="dome2rect conversion process." />  </p>
-<p><strong>Step 4.</strong> With the conversion proceess complete we can review the image sequence that was generated in the &quot;output&quot; folder. If you are running Windows 7 you can use the included review.bat movie viewer.</p>
+<p><strong>Step 4.</strong> When the conversion process is complete we can review the image sequence that was generated in the &quot;output&quot; folder. If you are running Windows 7 you can use the included review.bat movie viewer.</p>
 <p><strong>dome2rect.bat Output Image</strong>:<br />
 <img src="docs/images/zosma_output.jpg" alt="This image is the output from running a dome to rectillinear conversion." /><br />
-This image was created using a dome to rectillinear conversion.</p>
+This image was created using a dome to rectilinear conversion.</p>
 <hr />
 <h2>Batch Script Notes</h2>
-<p>Currently the tool is an early alpha stage and will be improved over time.  Right now the only image format enabled for input/output is .jpg files and a unix .pnm image format. In the future all the common image/video formats could be supported since the FFMPEG library is used for format conversions.</p>
+<p>The tool is an early alpha release and will be improved over time.  Right now the only image format enabled for input/output is .jpg files and a UNIX .pnm image format. In the future all the common image/video formats could be supported since the FFMPEG library is used for format conversions.</p>
 <p>I created the following example .bat scripts to show what is possible:</p>
 <p><strong>dome2rect.bat</strong><br />
-Converts a fisheye frame to a rectilinear image</p>
+Converts a fisheye frame to a rectilinear image.</p>
 <p><strong>latlong2dome.bat</strong><br />
-Converts a latitude/longitude to a fulldome image</p>
+Converts a latitude/longitude (equirectangular) frame to a fulldome image.</p>
 <p><strong>latlong2rect.bat</strong><br />
-Converts a latitude/longitude to a rectilinear image</p>
+Converts a latitude/longitude (equirectangular) frame to a rectilinear image.</p>
 <p><strong>review.bat</strong><br />
-Simple playback program to view the image output. This tool uses ffmpeg's playback tool and requires Windows 7 to run.</p>
+Simple playback program to view the image output. This tool uses ffmpeg's playback tool.</p>
 <h2>PT Conversion Scripts</h2>
 <p>Internally the image projections are done using the mpremap library by Helmut Dersch:
 <a href="http://webuser.fh-furtwangen.de/~dersch/mp/MotionPanoramas.html">http://webuser.fh-furtwangen.de/~dersch/mp/MotionPanoramas.html</a></p>
 <p>The conversion scripts are stored in the <strong>scripts/</strong> folder and are written using the Panotools PT Stitcher syntax:
 <a href="http://wiki.panotools.org/PTStitcher">http://wiki.panotools.org/PTStitcher</a></p>
-<p>This example panotools conversion script takes an equidistanst fisheye image and converts it to a 1920x1080p rectiliner image output. The image is rolled -10 degrees, and pitched 55 degrees.</p>
+<p>This example panotools conversion script takes an equidistanst fisheye image and converts it to a 1920x1080p rectilinear image output. The image is rolled -10 degrees, and pitched 55 degrees.</p>
 <pre><code># Defish fulldome image to a 1080p HD format:  
 p f0 w1920 h1080 v90  
 o f3 v180 r-10 y0 p55  
 </code></pre>
-<p>This example panotools conversion script takes an latitude longitude (equirectangular) image and converts it to a 1920x1080p rectiliner image output.</p>
+<p>This example panotools conversion script takes an latitude longitude (equirectangular) image and converts it to a 1920x1080p rectilinear image output.</p>
 <pre><code># Defish latlong image to a 1080p HD format:
 p f0 w1920 h1080 v90
 o f4 v360 r0 y0 p0
+</code></pre>
+<p>This example panotools conversion script takes an latitude longitude (equirectangular) image and converts it to a 1080x1080 fulldome angular fisheye image output. The image is pitched -90 degrees.</p>
+<pre><code># latlong to fulldome fisheye 1080x1080 format:
+p f3 w1080 h1080 v180
+o f4 v360 r0 y0 p-90
 </code></pre>
 <p>Here is a quick summary of the PT Stitcher syntax:</p>
 <pre><code>'p' = Destination Image Attributes
