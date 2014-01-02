@@ -1,4 +1,4 @@
-# Dome2rect v1.0 Alpha- Aug 19, 2013 #
+# Dome2rect v1.1 - Jan 1, 2014 #
 by Andrew Hazelden
 
 ## Overview ##
@@ -41,8 +41,29 @@ The dome2rect conversion process works by reading fulldome formatted imagery fro
 **Step 4.** When the conversion process is complete we can review the image sequence that was generated in the "output" folder. If you are running Windows 7 you can use the included review.bat movie viewer.
 
 **dome2rect.bat Output Image**:  
-![This image is the output from running a dome to rectillinear conversion.](docs/images/zosma_output.jpg)  
+![This image is the output from running a dome to rectillinear conversion.](docs/images/zosma_rect.jpg)  
 This image was created using a dome to rectilinear conversion.
+## Converting 1080p HD Media to Fulldome ##
+
+The rect2dome.bat script can be used to convert a 1080p HD JPEG or PNM image sequence into a fulldome formatted fisheye projection.
+
+The final output image resolution and the image positioning is controlled by editing the **rect2dome** script in the `C:\dome2rect\scripts\` folder.
+
+A sample rectilinear to domemaster image sequence conversion, named **rect2dome.0000.jpg** to **rect2dome.0035.jpg**, is included in the `C:\dome2rect\output` folder.
+
+
+**rect2dome.bat Input Image**:  
+![This image is the output from running a rectillinear to dome conversion.](docs/images/zosma_rect.jpg)  
+This is the input image for the rectilinear to dome conversion.
+
+**rect2dome.bat Output Image**:  
+![This image is the output from running a rectillinear to dome conversion.](docs/images/rect2dome.jpg)  
+This image was re-projected into a domemaster fisheye format.
+
+When the rect2dome output image is viewed in a fulldome simulator it looks like this:
+![This is the 1080p to dome conversion in a fulldome simulator.](docs/images/dome2rect-in-domeviewer.png)
+
+**Note:** The [Domemaster Stereo shader tool "Dome Viewer"](https://code.google.com/p/domemaster-stereo-shader/wiki/DomeViewer "Dome Viewer") was used to preview the rect to dome conversion.
 
 * * *
 
@@ -52,13 +73,19 @@ The tool is an early alpha release and will be improved over time.  Right now th
 I created the following example .bat scripts to show what is possible:
 
 **dome2rect.bat**  
-Converts a fisheye frame to a rectilinear image.
+Converts a fisheye image to a rectilinear image.
+
+**rect2dome.bat**
+Converts a rectilinear image to a fisheye image
+
+**latlong2cyl.bat**
+Converts a latitude/longitude image to a cylindrical image.
 
 **latlong2dome.bat**  
-Converts a latitude/longitude (equirectangular) frame to a fulldome image.
+Converts a latitude/longitude (equirectangular) image to a fulldome image.
 
 **latlong2rect.bat**  
-Converts a latitude/longitude (equirectangular) frame to a rectilinear image.
+Converts a latitude/longitude (equirectangular) image to a rectilinear image.
 
 **review.bat**  
 Simple playback program to view the image output. This tool uses ffmpeg's playback tool.
@@ -76,20 +103,23 @@ This example panotools conversion script takes an equidistanst fisheye image and
 <pre><code># Defish fulldome image to a 1080p HD format:  
 p f0 w1920 h1080 v90  
 o f3 v180 r-10 y0 p55  
+m i2  
 </code></pre>
 
-This example panotools conversion script takes an latitude longitude (equirectangular) image and converts it to a 1920x1080p rectilinear image output.
+This example panotools conversion script takes a latitude longitude (equirectangular) image and converts it to a 1920x1080p rectilinear image output.
 
 <pre><code># Defish latlong image to a 1080p HD format:
-p f0 w1920 h1080 v90
-o f4 v360 r0 y0 p0
+p f0 w1920 h1080 v90  
+o f4 v360 r0 y0 p0  
+m i2  
 </code></pre>
 
-This example panotools conversion script takes an latitude longitude (equirectangular) image and converts it to a 1080x1080 fulldome angular fisheye image output. The image is pitched -90 degrees.
+This example panotools conversion script takes a latitude longitude (equirectangular) image and converts it to a 1080x1080 fulldome angular fisheye image output. The image is pitched -90 degrees.
 
 <pre><code># latlong to fulldome fisheye 1080x1080 format:
 p f3 w1080 h1080 v180
 o f4 v360 r0 y0 p-90
+m i2
 </code></pre>
 
 
@@ -116,7 +146,15 @@ r-10 = roll the image -10 degrees (left)
 y22 = yaw the image 22 degrees
 p45 = pitch the image 45 degrees
 
-b0.1 or b0.5 = barrel distort correct = useful ranges from -1.0 to 1.0
+b0.1 or b0.5 = barrel distort correct 
+= useful ranges from -1.0 to 1.0
+
+m = Image Anti-Aliasing
+
+'m' Attributes:
+
+m i2 = smooth spline36 interpolation of the converted imagery
+
 </code></pre>
 
 
@@ -127,7 +165,7 @@ To change the name of the input and output files you can edit the .bat scripts u
 
 To convert a single frame image enter the exact image name. (eg. image.jpg) 
  
-To convert an an unpadded image sequence use the value %%d.jpg (eg. 9.jpg )
+To convert an unpadded image sequence use the value %%d.jpg (eg. 9.jpg )
 
 To convert an a 4 digit padded image sequence use the value %%.4d.jpg  (eg: 0009.jpg)  
 
@@ -160,6 +198,5 @@ Andrew Hazelden
 eMail: [andrew@andrewhazelden.com](mailto:andrew@andrewhazelden.com)   
 Blog: [http://www.andrewhazelden.com](http://www.andrewhazelden.com)  
 Twitter: [@andrewhazelden](https://twitter.com/andrewhazelden)  
-Google+: [https://plus.google.com/u/0/105694670378845894137](https://plus.google.com/u/0/105694670378845894137)
-
+Google+: [https://plus.google.com/+AndrewHazelden/](https://plus.google.com/+AndrewHazelden/)
 

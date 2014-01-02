@@ -1,7 +1,7 @@
 @ECHO OFF
-@title dome2rect v1.0 Alpha - immersive transformations
+@title dome2rect v1.1 - immersive transformations
 
-echo dome2rect v1.0 Alpha - Aug 19, 2013
+echo dome2rect v1.1 - Jan 1, 2014
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo dome2rect converts a fisheye image sequence into the rectilinear format
@@ -34,6 +34,6 @@ cd C:\dome2rect\
 REM Run the remapping program
 bin\mpremap.exe -f scripts\%ptscript% -o %output% %input%
 
-echo Loading frames into viewer...
-REM PAUSE
+REM echo Loading frames into viewer...
+PAUSE
 REM C:\dome2rect\review.bat

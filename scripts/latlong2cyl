@@ -1,9 +1,10 @@
-# Convert a latitude/longitude to a rectilinear image
-# Output resolution: 1920x1080 px
+# Convert a latitude/longitude to a cylindrical image
+# Output resolution: 1920x960 px Horizontal FOV: 360 degrees
 
 # This script is written the the PTStitcher language
 # For more syntax information check out the PTStitcher Wiki page:
 # http://wiki.panotools.org/PTStitcher
+
 
 #####################
 # 'p' = Destination Image Attributes
@@ -40,23 +41,20 @@
 # 'm' = Anti-Aliasing Attributes
 #
 # m i2 = smooth spline36 interpolation of the converted imagery
+#
 #####################
 
 # You can pick one of the following examples:
 
-# latlong image to rectilinear 1080p HD format:
-p f0 w1920 h1080 v130
+# latlong image to cylindrical 1080p HD format:
+#p f1 w2160 h1080 v360
+#o f4 v360 r0 y0 p0
+#m i2
+
+# latlong image to cylindrical 1920x960px output:
+p f1 w1920 h960 v360
 o f4 v360 r0 y0 p0
 m i2
 
-# latlong image to rectilinear 1080p HD format:
-#p f0 w1920 h1080 v90
-#o f4 v360 r0 y0 p0
-#m i2
-
-# latlong image to rectilinear 960x540px output:
-#p f0 w960 h540 v90
-#o f4 v360 r0 y0 p0
-#m i2
 
 

@@ -1,6 +1,10 @@
 # Convert a latitude/longitude to a dome image
 # Output resolution: 1920x1080 px
 
+# This script is written the the PTStitcher language
+# For more syntax information check out the PTStitcher Wiki page:
+# http://wiki.panotools.org/PTStitcher
+
 #####################
 # 'p' = Destination Image Attributes
 #
@@ -33,16 +37,22 @@
 
 # b0.1 or b0.5 = barrel distort correct = useful ranges from -1.0 to 1.0
 #####################
+# Image Interpolation and Anti-Aliasing
+# 'm' = Anti-Aliasing Attributes
+#
+# m i2 = smooth spline36 interpolation of the converted imagery
+#####################
 
 # You can pick one of the following examples:
 
-# Defish image to a 1080p HD format:
+# latlong to fulldome fisheye 1080x1080 format:
 p f3 w1080 h1080 v180
 o f4 v360 r0 y0 p-90
+m i2
 
-# Defish 960x540px output:
-#p f3 w960 h540 v180
+# latlong to fulldome fisheye 960x960px output:
+#p f3 w960 h960 v180
 #o f4 v360 r0 y0 p-90
-
+#m i2
 
 

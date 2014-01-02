@@ -1,5 +1,5 @@
-# Convert a latitude/longitude to a rectilinear image
-# Output resolution: 1920x1080 px
+# Convert a rectilinear image to a fisheye image
+# Output resolution: 4K, 2K, 1080p, 960p
 
 # This script is written the the PTStitcher language
 # For more syntax information check out the PTStitcher Wiki page:
@@ -12,6 +12,7 @@
 # C0,960,420,960 = Crop Dimensions left,right,top,bottom
 # f0 = projection mode  0 = rectilinear
 # f1 = projection mode  1 = cylindrical
+# f3 = projection mode  3 = fullframe fisheye
 
 # w1920 = destination width 1920 px
 # h1080 = destination height 1080 px
@@ -21,18 +22,14 @@
 # 'o' = Source Image Attributes
 #
 # 'o' Attributes:
+# f0 = projection mode 0 = rectilinear
 # f3 = projection mode 3 = equidistant fisheye
 # f5 = projection mode 5 = circular fisheye
 # f10 = projection mode 10 = equisolid fisheye
 
-# f4 = projection mode 4 = equirectagular
-
 # r-10 = roll the image -10 degrees (left)
 # y22 = yaw the image 22 degrees
 # p45 = pitch the image 45 degrees
-
-#p90 = faces downwards
-#p-90 = faces upwards
 
 # b0.1 or b0.5 = barrel distort correct = useful ranges from -1.0 to 1.0
 #####################
@@ -42,21 +39,33 @@
 # m i2 = smooth spline36 interpolation of the converted imagery
 #####################
 
-# You can pick one of the following examples:
 
-# latlong image to rectilinear 1080p HD format:
-p f0 w1920 h1080 v130
-o f4 v360 r0 y0 p0
+# Here are several Panotools script examples to choose from:
+# (uncomment the number-sign from the lines you want to use)
+# A pitch value between -60 and -45 degrees usually works well.
+
+# rect to fisheye image 4096p format:
+#p f3 w4096 h4096 v180
+#o f0 v90 r0 y0 p-60
+#m i2
+
+# rect to fisheye image 2048p format:
+p f3 w2048 h2048 v180
+o f0 v120 r0 y0 p-45
 m i2
 
-# latlong image to rectilinear 1080p HD format:
-#p f0 w1920 h1080 v90
-#o f4 v360 r0 y0 p0
+# rect to fisheye image 1080p format:
+#p f3 w1080 h1080 v180
+#o f0 v90 r0 y0 p-60
 #m i2
 
-# latlong image to rectilinear 960x540px output:
-#p f0 w960 h540 v90
-#o f4 v360 r0 y0 p0
+# rect to fisheye 960x960px output:
+#p f3 w960 h960 v180
+#o f0 v90 r0 y0 p-60
 #m i2
 
+# rect to fisheye 960x960px output:
+#p f3 w960 h960 v180
+#o f0 v120 r0 y0 p-45
+#m i2
 

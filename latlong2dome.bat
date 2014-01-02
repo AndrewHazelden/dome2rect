@@ -1,10 +1,10 @@
 @ECHO OFF
-@title latlong2rect v1.0 Alpha - immersive transformations
+@title latlong2dome v1.1 - immersive transformations
 
-echo latlong2rect v1.0 Alpha- Aug 19, 2013
+echo latlong2dome v1.1 - Jan 1, 2014
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
-echo latlong2rect converts a latitude/longitude image sequence into rectilinear
+echo latlong2dome converts a latitude/longitude image sequence into dome
 echo format using the moving panorama program by Helmut Dersch and FFMPEG.
 echo ----------------------------------------------------------------------
 echo Check out the PTStitcher wiki for the script syntax:
@@ -35,6 +35,6 @@ cd C:\dome2rect\
 REM Run the remapping program
 bin\mpremap.exe -f scripts\%ptscript% -o %output% %input%
 
-echo Loading frames into viewer...
-REM PAUSE
+REM echo Loading frames into viewer...
+PAUSE
 REM C:\dome2rect\review.bat

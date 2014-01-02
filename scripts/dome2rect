@@ -1,6 +1,10 @@
 # Convert a fisheye frame to a rectilinear image
 # Output resolution: 1920x1080 px
 
+# This script is written the the PTStitcher language
+# For more syntax information check out the PTStitcher Wiki page:
+# http://wiki.panotools.org/PTStitcher
+
 #####################
 # 'p' = Destination Image Attributes
 #
@@ -27,20 +31,27 @@
 
 # b0.1 or b0.5 = barrel distort correct = useful ranges from -1.0 to 1.0
 #####################
-
+# Image Interpolation and Anti-Aliasing
+# 'm' = Anti-Aliasing Attributes
+#
+# m i2 = smooth spline36 interpolation of the converted imagery
+#
+#####################
 # You can pick one of the following examples:
 
 # Defish image to a 1080p HD format with barrel distortion:
 p f0 w1920 h1080 v90
 o f3 v180 r-10 y0 p55 b0.1
+m i2
 
 # Defish image to a 1080p HD format:
 #p f0 w1920 h1080 v90
 #o f3 v180 r-10 y0 p55
+#m i2
 
 # Defish 960x540px output:
 #p f0 w960 h540 v90
 #o f3 v180 r-10 y0 p55
-
+#m i2
 
 

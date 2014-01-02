@@ -1,10 +1,10 @@
 @ECHO OFF
-@title latlong2rect v1.1 - immersive transformations
+@title latlong2cyl v1.1 - immersive transformations
 
 echo latlong2rect v1.1 - Jan 1, 2014
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
-echo latlong2rect converts a latitude/longitude image sequence into rectilinear
+echo latlong2cyl converts a latitude/longitude image sequence into a cylindrical
 echo format using the moving panorama program by Helmut Dersch and FFMPEG.
 echo ----------------------------------------------------------------------
 echo Check out the PTStitcher wiki for the script syntax:
@@ -19,7 +19,7 @@ REM Use %%d.jpg for an unpadded image sequence (eg:  9.jpg)
 REM Use %%.4d.jpg for a padded image sequence (eg: 0009.jpg)
 
 REM Process a single frame for testing:
-@set ptscript=latlong2rect
+@set ptscript=latlong2cyl
 @set input=input\latlong.jpg
 @set output=output\sequence.%%d.jpg
 

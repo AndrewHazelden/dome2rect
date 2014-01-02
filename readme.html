@@ -273,7 +273,7 @@ img {
 </style>
 </head>
 <body>
-<h1>Dome2rect v1.0 Alpha- Aug 19, 2013</h1>
+<h1>Dome2rect v1.1 - Jan 1, 2014</h1>
 <p>by Andrew Hazelden</p>
 <h2>Overview</h2>
 <p>Dome2rect is a command line script that uses the open source Panotool library + MPRemap  application to automate the process of converting image sequences between multiple panoramic formats. I created this script because I wanted to make it simpler to convert a fulldome movie trailer into a &quot;flat screen&quot; rectilinear format for posting on sites like YouTube.</p>
@@ -299,18 +299,35 @@ img {
 <p><img src="docs/images/dome2rect_in_action.png" alt="dome2rect conversion process." />  </p>
 <p><strong>Step 4.</strong> When the conversion process is complete we can review the image sequence that was generated in the &quot;output&quot; folder. If you are running Windows 7 you can use the included review.bat movie viewer.</p>
 <p><strong>dome2rect.bat Output Image</strong>:<br />
-<img src="docs/images/zosma_output.jpg" alt="This image is the output from running a dome to rectillinear conversion." /><br />
+<img src="docs/images/zosma_rect.jpg" alt="This image is the output from running a dome to rectillinear conversion." /><br />
 This image was created using a dome to rectilinear conversion.</p>
+<h2>Converting 1080p HD Media to Fulldome</h2>
+<p>The rect2dome.bat script can be used to convert a 1080p HD JPEG or PNM image sequence into a fulldome formatted fisheye projection.</p>
+<p>The final output image resolution and the image positioning is controlled by editing the <strong>rect2dome</strong> script in the <code>C:\dome2rect\scripts\</code> folder.</p>
+<p>A sample rectilinear to domemaster image sequence conversion, named <strong>rect2dome.0000.jpg</strong> to <strong>rect2dome.0035.jpg</strong>, is included in the <code>C:\dome2rect\output</code> folder.</p>
+<p><strong>rect2dome.bat Input Image</strong>:<br />
+<img src="docs/images/zosma_rect.jpg" alt="This image is the output from running a rectillinear to dome conversion." /><br />
+This is the input image for the rectilinear to dome conversion.</p>
+<p><strong>rect2dome.bat Output Image</strong>:<br />
+<img src="docs/images/rect2dome.jpg" alt="This image is the output from running a rectillinear to dome conversion." /><br />
+This image was re-projected into a domemaster fisheye format.</p>
+<p>When the rect2dome output image is viewed in a fulldome simulator it looks like this:
+<img src="docs/images/dome2rect-in-domeviewer.png" alt="This is the 1080p to dome conversion in a fulldome simulator." /></p>
+<p><strong>Note:</strong> The <a href="https://code.google.com/p/domemaster-stereo-shader/wiki/DomeViewer" title="Dome Viewer">Domemaster Stereo shader tool &quot;Dome Viewer&quot;</a> was used to preview the rect to dome conversion.</p>
 <hr />
 <h2>Batch Script Notes</h2>
 <p>The tool is an early alpha release and will be improved over time.  Right now the only image format enabled for input/output is .jpg files and a UNIX .pnm image format. In the future all the common image/video formats could be supported since the FFMPEG library is used for format conversions.</p>
 <p>I created the following example .bat scripts to show what is possible:</p>
 <p><strong>dome2rect.bat</strong><br />
-Converts a fisheye frame to a rectilinear image.</p>
+Converts a fisheye image to a rectilinear image.</p>
+<p><strong>rect2dome.bat</strong>
+Converts a rectilinear image to a fisheye image</p>
+<p><strong>latlong2cyl.bat</strong>
+Converts a latitude/longitude image to a cylindrical image.</p>
 <p><strong>latlong2dome.bat</strong><br />
-Converts a latitude/longitude (equirectangular) frame to a fulldome image.</p>
+Converts a latitude/longitude (equirectangular) image to a fulldome image.</p>
 <p><strong>latlong2rect.bat</strong><br />
-Converts a latitude/longitude (equirectangular) frame to a rectilinear image.</p>
+Converts a latitude/longitude (equirectangular) image to a rectilinear image.</p>
 <p><strong>review.bat</strong><br />
 Simple playback program to view the image output. This tool uses ffmpeg's playback tool.</p>
 <h2>PT Conversion Scripts</h2>
@@ -322,16 +339,19 @@ Simple playback program to view the image output. This tool uses ffmpeg's playba
 <pre><code># Defish fulldome image to a 1080p HD format:  
 p f0 w1920 h1080 v90  
 o f3 v180 r-10 y0 p55  
+m i2  
 </code></pre>
-<p>This example panotools conversion script takes an latitude longitude (equirectangular) image and converts it to a 1920x1080p rectilinear image output.</p>
+<p>This example panotools conversion script takes a latitude longitude (equirectangular) image and converts it to a 1920x1080p rectilinear image output.</p>
 <pre><code># Defish latlong image to a 1080p HD format:
-p f0 w1920 h1080 v90
-o f4 v360 r0 y0 p0
+p f0 w1920 h1080 v90  
+o f4 v360 r0 y0 p0  
+m i2  
 </code></pre>
-<p>This example panotools conversion script takes an latitude longitude (equirectangular) image and converts it to a 1080x1080 fulldome angular fisheye image output. The image is pitched -90 degrees.</p>
+<p>This example panotools conversion script takes a latitude longitude (equirectangular) image and converts it to a 1080x1080 fulldome angular fisheye image output. The image is pitched -90 degrees.</p>
 <pre><code># latlong to fulldome fisheye 1080x1080 format:
 p f3 w1080 h1080 v180
 o f4 v360 r0 y0 p-90
+m i2
 </code></pre>
 <p>Here is a quick summary of the PT Stitcher syntax:</p>
 <pre><code>'p' = Destination Image Attributes
@@ -356,12 +376,20 @@ r-10 = roll the image -10 degrees (left)
 y22 = yaw the image 22 degrees
 p45 = pitch the image 45 degrees
 
-b0.1 or b0.5 = barrel distort correct = useful ranges from -1.0 to 1.0
+b0.1 or b0.5 = barrel distort correct 
+= useful ranges from -1.0 to 1.0
+
+m = Image Anti-Aliasing
+
+'m' Attributes:
+
+m i2 = smooth spline36 interpolation of the converted imagery
+
 </code></pre>
 <h3>Changing Input &amp; Output File Names</h3>
 <p>To change the name of the input and output files you can edit the .bat scripts using a plain text editor. All image sequences start on frame number 0 (eg. 0.jpg)  </p>
 <p>To convert a single frame image enter the exact image name. (eg. image.jpg) </p>
-<p>To convert an an unpadded image sequence use the value %%d.jpg (eg. 9.jpg )</p>
+<p>To convert an unpadded image sequence use the value %%d.jpg (eg. 9.jpg )</p>
 <p>To convert an a 4 digit padded image sequence use the value %%.4d.jpg  (eg: 0009.jpg)  </p>
 <p>If you want the dome2rect script to process a single frame for testing change the following code:  </p>
 <blockquote>
@@ -386,7 +414,7 @@ Andrew Hazelden  </p>
 <p>eMail: <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#x61;n&#x64;&#x72;&#x65;&#x77;&#x40;&#97;&#x6e;d&#114;&#x65;&#x77;&#104;&#x61;&#122;&#101;&#x6c;&#x64;&#x65;&#110;&#x2e;&#99;&#x6f;&#109;">&#x61;&#110;&#x64;&#114;&#101;w&#64;a&#110;&#100;&#114;&#101;&#119;&#x68;&#x61;zel&#100;&#x65;&#x6e;&#46;&#99;&#111;&#109;</a> <br />
 Blog: <a href="http://www.andrewhazelden.com">http://www.andrewhazelden.com</a><br />
 Twitter: <a href="https://twitter.com/andrewhazelden">@andrewhazelden</a><br />
-Google+: <a href="https://plus.google.com/u/0/105694670378845894137">https://plus.google.com/u/0/105694670378845894137</a></p>
+Google+: <a href="https://plus.google.com/+AndrewHazelden/">https://plus.google.com/+AndrewHazelden/</a></p>
 
 </body>
 </html>
