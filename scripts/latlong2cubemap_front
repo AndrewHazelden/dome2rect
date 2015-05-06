@@ -1,5 +1,5 @@
-# Convert a latitude/longitude to a dome image
-# Output resolution: 1920x1080 px
+# Convert a latlong image to the cubic front format
+# Output resolution: 1024x1024 px
 
 # This script is written the the PTStitcher language
 # For more syntax information check out the PTStitcher Wiki page:
@@ -17,7 +17,7 @@
 
 # w1920 = destination width 1920 px
 # h1080 = destination height 1080 px
-# v90 = horizontal field of view = 90 degrees
+# v180 = horizontal field of view = 180 degrees
 
 #####################
 # 'o' = Source Image Attributes
@@ -34,27 +34,36 @@
 # y22 = yaw the image 22 degrees
 # p45 = pitch the image 45 degrees
 
-#p90 = faces downwards
-#p-90 = faces upwards
-
 # b0.1 or b0.5 = barrel distort correct = useful ranges from -1.0 to 1.0
 #####################
 # Image Interpolation and Anti-Aliasing
 # 'm' = Anti-Aliasing Attributes
 #
 # m i2 = smooth spline36 interpolation of the converted imagery
+#
 #####################
-
 # You can pick one of the following examples:
 
-# latlong to fulldome fisheye 1080x1080 format:
-p f3 w1080 h1080 v180
-o f4 v360 r0 y0 p-90
+# Front View
+
+# latlong image to a 1024p cubic format
+p f0 w1024 h1024 v90
+o f4 v360 r0 y0 p0 b0
+
+# latlong image to a 1536p cubic format
+#p f2 w1536 h1536 v90
+#o f4 v360 r0 y0 p0 b0
+
+# latlong image to a 2048p cubic format
+#p f2 w2048 h2048 v90
+#o f4 v360 r0 y0 p0 b0
+
+# latlong image to a 3072p cubic format
+#p f2 w3072 h3072 v90
+#o f4 v360 r0 y0 p0 b0
+
+# latlong image to a 4096p cubic format
+#p f2 w4096 h4096 v90
+#o f4 v360 r0 y0 p0 b0
+
 m i2
-
-# latlong to fulldome fisheye 960x960px output:
-#p f3 w960 h960 v180
-#o f4 v360 r0 y0 p-90
-#m i2
-
-

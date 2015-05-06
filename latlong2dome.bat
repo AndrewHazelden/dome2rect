@@ -1,7 +1,7 @@
 @ECHO OFF
-@title latlong2dome v1.1 - immersive transformations
+@title latlong2dome v1.3 - immersive transformations
 
-echo latlong2dome v1.1 - Jan 1, 2014
+echo latlong2dome v1.3 - May 6, 2015
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo latlong2dome converts a latitude/longitude image sequence into dome
@@ -37,4 +37,4 @@ bin\mpremap.exe -f scripts\%ptscript% -o %output% %input%
 
 REM echo Loading frames into viewer...
 PAUSE
-REM C:\dome2rect\review.bat
+REM C:\dome2rect\review.bat %output%

@@ -1,10 +1,13 @@
-# Dome2rect v1.1 - Jan 1, 2014 #
+# Dome2rect v1.3 - 2015-05-06 #
 by Andrew Hazelden
 
 ## Overview ##
 Dome2rect is a command line script that uses the open source Panotool library + MPRemap  application to automate the process of converting image sequences between multiple panoramic formats. I created this script because I wanted to make it simpler to convert a fulldome movie trailer into a "flat screen" rectilinear format for posting on sites like YouTube.
 
-**Note:** Windows 7 is required to use the tools.
+**Note:** Windows 7 or higher is required to use the tools.
+
+### Changes in Version 1.3 ###
+New in Dome2rect version 1.3 is support for latlong to cubic, horizontal cross, vertical cross, and cubemap3x2 conversions.
 
 ## Download ##
 
@@ -51,7 +54,6 @@ The final output image resolution and the image positioning is controlled by edi
 
 A sample rectilinear to domemaster image sequence conversion, named **rect2dome.0000.jpg** to **rect2dome.0035.jpg**, is included in the `C:\dome2rect\output` folder.
 
-
 **rect2dome.bat Input Image**:  
 ![This image is the output from running a rectillinear to dome conversion.](docs/images/zosma_rect.jpg)  
 This is the input image for the rectilinear to dome conversion.
@@ -63,7 +65,7 @@ This image was re-projected into a domemaster fisheye format.
 When the rect2dome output image is viewed in a fulldome simulator it looks like this:
 ![This is the 1080p to dome conversion in a fulldome simulator.](docs/images/dome2rect-in-domeviewer.png)
 
-**Note:** The [Domemaster Stereo shader tool "Dome Viewer"](https://code.google.com/p/domemaster-stereo-shader/wiki/DomeViewer "Dome Viewer") was used to preview the rect to dome conversion.
+**Note:** The [Domemaster Stereo shader tool "Dome Viewer"](https://github.com/zicher3d-org/domemaster-stereo-shader/wiki/DomeViewer) was used to preview the rect to dome conversion.
 
 * * *
 
@@ -72,11 +74,22 @@ The tool is an early alpha release and will be improved over time.  Right now th
 
 I created the following example .bat scripts to show what is possible:
 
-**dome2rect.bat**  
-Converts a fisheye image to a rectilinear image.
+**angular2cyl.bat**  
+Converts a an angular fisheye image to a cylindrical image.
 
-**rect2dome.bat**
-Converts a rectilinear image to a fisheye image
+**angular2latlong.bat**  
+Converts an angular fisheye image to a latitude/longitude (equirectangular) image.
+
+**dome2rect.bat**  
+Converts a 180 degree domemaster format angular fisheye image to a rectilinear image format.
+
+**latlong2cubemap3x2.bat**  
+Converts a latitude/longitude image to a cubic format that has a single image output with a Cubemap 3x2 arrangement with 3 cubic faces on the top row, and 3 cubic faces on the bottom row. 
+
+The Cubemap 3x2 format was popularized by [Garden Gnome Software's Pano2VR](http://ggnome.com/pano2vr) Panoramic tools.
+
+**latlong2cubic.bat**  
+Converts a latitude/longitude image to a set of 6 cubic face images.
 
 **latlong2cyl.bat**
 Converts a latitude/longitude image to a cylindrical image.
@@ -84,8 +97,17 @@ Converts a latitude/longitude image to a cylindrical image.
 **latlong2dome.bat**  
 Converts a latitude/longitude (equirectangular) image to a fulldome image.
 
+**latlong2horizontalcross.bat**  
+Converts a latitude/longitude image to a cubic format that has a single image output with a horizontal cross arrangement.
+
 **latlong2rect.bat**  
 Converts a latitude/longitude (equirectangular) image to a rectilinear image.
+
+**latlong2verticalcross.bat**  
+Converts a latitude/longitude image to a cubic format that has a single image output with a vertical cross arrangement.
+
+**rect2dome.bat**  
+Converts a rectilinear image to a fisheye image
 
 **review.bat**  
 Simple playback program to view the image output. This tool uses ffmpeg's playback tool.
@@ -106,9 +128,26 @@ o f3 v180 r-10 y0 p55
 m i2  
 </code></pre>
 
+This example panotools conversion script takes an angular fisheye image and converts it to a 2160x1080 cylindrical image output. The image is pitched 90 degrees.
+
+<pre><code># Defish image to a cylindrical 1080p format:
+p f1 w2160 h1080 v360
+o f3 v360 r0 y0 p90 b0
+m i2
+</code></pre>
+
+
+This example panotools conversion script takes an angular fisheye image and converts it to a 2048x1024 latitude longitude (equirectangular) image output. The image is pitched 90 degrees.
+
+<pre><code># Defish image to a latlong 1024p format:
+p f2 w2048 h1024 v360
+o f3 v360 r0 y0 p90 b0
+m i2
+</code></pre>
+
 This example panotools conversion script takes a latitude longitude (equirectangular) image and converts it to a 1920x1080p rectilinear image output.
 
-<pre><code># Defish latlong image to a 1080p HD format:
+<pre><code># latlong image to a 1080p HD format:
 p f0 w1920 h1080 v90  
 o f4 v360 r0 y0 p0  
 m i2  
@@ -130,6 +169,8 @@ Here is a quick summary of the PT Stitcher syntax:
 C0,960,420,960 = Crop Dimensions left,right,top,bottom
 f0 = projection mode  0 = rectilinear
 f1 = projection mode  1 = cylindrical
+f2 = projection mode  2 = equirectagular/latlong
+f3 = projection mode  3 = fullframe fisheye
 
 w1920 = destination width 1920 px
 h1080 = destination height 1080 px
@@ -138,7 +179,9 @@ v90 = horizontal field of view = 90 degrees
 'o' = Source Image Attributes
 
 'o' Attributes:
+f0 = projection mode 0 = rectilinear
 f3 = projection mode 3 = equidistant fisheye
+f4 = projection mode 4 = equirectagular/latlong
 f5 = projection mode 5 = circular fisheye
 f10 = projection mode 10 = equisolid fisheye
 
@@ -165,9 +208,9 @@ To change the name of the input and output files you can edit the .bat scripts u
 
 To convert a single frame image enter the exact image name. (eg. image.jpg) 
  
-To convert an unpadded image sequence use the value %%d.jpg (eg. 9.jpg )
+To convert an unpadded image sequence use the value %%d.jpg (eg. 9.jpg )  
 
-To convert an a 4 digit padded image sequence use the value %%.4d.jpg  (eg: 0009.jpg)  
+To convert an a 4 digit padded image sequence use the value %%.4d.jpg (eg: 0009.jpg)  
 
 If you want the dome2rect script to process a single frame for testing change the following code:  
 

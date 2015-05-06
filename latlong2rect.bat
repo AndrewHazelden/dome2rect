@@ -1,7 +1,7 @@
 @ECHO OFF
-@title latlong2rect v1.1 - immersive transformations
+@title latlong2rect v1.3 - immersive transformations
 
-echo latlong2rect v1.1 - Jan 1, 2014
+echo latlong2rect v1.3 - May 6, 2015
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo latlong2rect converts a latitude/longitude image sequence into rectilinear
@@ -36,4 +36,4 @@ bin\mpremap.exe -f scripts\%ptscript% -o %output% %input%
 
 REM echo Loading frames into viewer...
 PAUSE
-REM C:\dome2rect\review.bat
+REM C:\dome2rect\review.bat %output%

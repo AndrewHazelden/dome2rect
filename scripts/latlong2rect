@@ -12,6 +12,8 @@
 # C0,960,420,960 = Crop Dimensions left,right,top,bottom
 # f0 = projection mode  0 = rectilinear
 # f1 = projection mode  1 = cylindrical
+# f2 = projection mode  2 = equirectagular/latlong
+# f3 = projection mode  3 = fullframe fisheye
 
 # w1920 = destination width 1920 px
 # h1080 = destination height 1080 px
@@ -21,11 +23,12 @@
 # 'o' = Source Image Attributes
 #
 # 'o' Attributes:
+# f0 = projection mode 0 = rectilinear
 # f3 = projection mode 3 = equidistant fisheye
+# f4 = projection mode 4 = equirectagular
 # f5 = projection mode 5 = circular fisheye
 # f10 = projection mode 10 = equisolid fisheye
 
-# f4 = projection mode 4 = equirectagular
 
 # r-10 = roll the image -10 degrees (left)
 # y22 = yaw the image 22 degrees
