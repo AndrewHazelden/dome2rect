@@ -101,7 +101,7 @@ Converts a latitude/longitude (equirectangular) image to a fulldome image.
 Converts a latitude/longitude image to a cubic format that has a single image output with a horizontal cross arrangement.
 
 **latlong2mentalrayhorizontalstripcube1.bat**  
-Converts a latitude/longitude image into a a cubic format that has a single image output with a mental ray cube1 horizontal strip arrangement.
+Converts a latitude/longitude image into a cubic format that has a single image output with a mental ray cube1 horizontal strip arrangement.
 
 **latlong2rect.bat**  
 Converts a latitude/longitude (equirectangular) image to a rectilinear image.
@@ -110,7 +110,7 @@ Converts a latitude/longitude (equirectangular) image to a rectilinear image.
 Converts a latitude/longitude image to a cubic format that has a single image output with a vertical cross arrangement.
 
 **latlongstereo2gearvrstereo.bat**  
-Converts a pair of latitude/longitude stereo images into a a cubic format that has a single image output with a Samsung GearVR Stereo horizontal strip arrangement.
+Converts a pair of latitude/longitude stereo images into a cubic format that has a single image output with a Samsung GearVR Stereo horizontal strip arrangement.
 
 The left LatLong frames in the image sequence should be named `<name>_L.#.jpg`, and the right LatLong frames in the image sequence should be named `<name>_R.#.jpg`.
 
