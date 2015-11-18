@@ -1,7 +1,7 @@
 @ECHO OFF
-@title angular2latlong v1.3 - immersive transformations
+@title angular2latlong v1.4 - immersive transformations
 
-echo angular2latlong v1.3 - May 6, 2015
+echo angular2latlong v1.4 - November 18, 2015
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo angular2latlong converts a 360 degree angu;ar fisheye image sequence

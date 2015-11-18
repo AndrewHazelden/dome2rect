@@ -1,4 +1,4 @@
-# Dome2rect v1.3 - 2015-05-06 #
+# Dome2rect v1.4 - 2015-11-18 #
 by Andrew Hazelden
 
 ## Overview ##
@@ -6,8 +6,8 @@ Dome2rect is a command line script that uses the open source Panotool library + 
 
 **Note:** Windows 7 or higher is required to use the tools.
 
-### Changes in Version 1.3 ###
-New in Dome2rect version 1.3 is support for latlong to cubic, horizontal cross, vertical cross, and cubemap3x2 conversions.
+### Changes in Version 1.4 ###
+New in Dome2rect version 1.4 is support for converting Latlong Stereo images into the GearVR Stereo cubic format, and a LatLong to mental ray cube1 horizontal strip format conversion.
 
 ## Download ##
 
@@ -100,11 +100,19 @@ Converts a latitude/longitude (equirectangular) image to a fulldome image.
 **latlong2horizontalcross.bat**  
 Converts a latitude/longitude image to a cubic format that has a single image output with a horizontal cross arrangement.
 
+**latlong2mentalrayhorizontalstripcube1.bat**  
+Converts a latitude/longitude image into a a cubic format that has a single image output with a mental ray cube1 horizontal strip arrangement.
+
 **latlong2rect.bat**  
 Converts a latitude/longitude (equirectangular) image to a rectilinear image.
 
 **latlong2verticalcross.bat**  
 Converts a latitude/longitude image to a cubic format that has a single image output with a vertical cross arrangement.
+
+**latlongstereo2gearvrstereo.bat**  
+Converts a pair of latitude/longitude stereo images into a a cubic format that has a single image output with a Samsung GearVR Stereo horizontal strip arrangement.
+
+The left LatLong frames in the image sequence should be named `<name>_L.#.jpg`, and the right LatLong frames in the image sequence should be named `<name>_R.#.jpg`.
 
 **rect2dome.bat**  
 Converts a rectilinear image to a fisheye image

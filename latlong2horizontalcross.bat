@@ -1,7 +1,7 @@
 @ECHO OFF
-@title latlong2horizontalcross v1.3 - immersive transformations
+@title latlong2horizontalcross v1.4 - immersive transformations
 
-echo latlong2horizontalcross v1.3 - May 6, 2015
+echo latlong2horizontalcross v1.4 - November 18, 2015
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo latlong2horizontalcross converts a latlong formatted image sequence
@@ -15,7 +15,7 @@ REM Note: mpremap accepts piped .pnm image streams
 
 REM Image sequences are processed with unpadded sequence frame extensions.
 
-REM Horizontal Cross Merging Start/End Sequence Frame Range:
+REM Start/End Sequence Frame Range:
 REM @set start_frame=1
 REM @set end_frame=30
 @set start_frame=1
@@ -23,7 +23,7 @@ REM @set end_frame=30
 
 @set step_by_frames=1
 
-REM Process a 4 digit padded image sequence:
+REM PT Stitcher Scripts
 @set ptscript_back=latlong2cubemap_back
 @set ptscript_bottom=latlong2cubemap_bottom
 @set ptscript_front=latlong2cubemap_front

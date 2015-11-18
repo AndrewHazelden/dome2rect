@@ -1,7 +1,7 @@
 @ECHO OFF
-@title dome2rect v1.3 - immersive transformations
+@title dome2rect v1.4 - immersive transformations
 
-echo dome2rect v1.3 - May 6, 2015
+echo dome2rect v1.4 - November 18, 2015
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo dome2rect converts a fisheye image sequence into the rectilinear format

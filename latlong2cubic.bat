@@ -1,7 +1,7 @@
 @ECHO OFF
-@title latlong2cubic v1.3 - immersive transformations
+@title latlong2cubic v1.4 - immersive transformations
 
-echo latlong2cubic v1.3 - May 6, 2015
+echo latlong2cubic v1.4 - November 18, 2015
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo latlong2cubic converts a latlong formatted image sequence
@@ -19,7 +19,7 @@ REM Use the exact image name for a single frame (eg. image.0009.jpg)
 REM Use %%d.jpg for an unpadded image sequence (eg:  9.jpg)
 REM Use %%.4d.jpg for a padded image sequence (eg: 0009.jpg)
 
-REM Process a 4 digit padded image sequence:
+REM PT Stitcher Scripts
 @set ptscript_back=latlong2cubemap_back
 @set ptscript_bottom=latlong2cubemap_bottom
 @set ptscript_front=latlong2cubemap_front

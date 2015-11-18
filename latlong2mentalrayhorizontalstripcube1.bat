@@ -1,12 +1,12 @@
 @ECHO OFF
-@title latlong2cubemap3x2 v1.4 - immersive transformations
+@title latlong2mentalrayhorizontalstripcube1 v1.4 - immersive transformations
 
-echo latlong2cubemap3x2 v1.4 - November 18, 2015
+echo latlong2mentalrayhorizontalstripcube1 v1.4 - November 18, 2015
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
-echo latlong2cubemap3x2 converts a latlong formatted image sequence
-echo into a 3x2 cubemap format using the moving panorama program by 
-echo Helmut Dersch and Imagemagick.
+echo latlong2mentalrayhorizontalstripcube1 converts a latlong formatted image 
+echo sequence into a cubic mental ray horizontal strip cube1 format using the
+echo moving panorama program by Helmut Dersch and Imagemagick.
 echo ----------------------------------------------------------------------
 echo Check out the PTStitcher wiki for the script syntax:
 echo http://wiki.panotools.org/PTStitcher
@@ -22,6 +22,9 @@ REM @set end_frame=30
 @set end_frame=1
 
 @set step_by_frames=1
+
+REM The cubemap extracted face resolution is defined in each of the PT Stitcher scripts on the "p" line
+REM Example: p f0 w1024 h1024 v90
 
 REM PT Stitcher Scripts
 @set ptscript_back=latlong2cubemap_back
@@ -45,8 +48,8 @@ REM Output image - 6 extracted cubemap faces:
 @set output_right=output\cubemap_right
 @set output_top=output\cubemap_top
 
-REM Output image - final stitched 3x2 cubemap
-@set output_cube3x2=output\cubemap3x2
+REM Output image - final stitched mr horizontal strip cube1
+@set output_cube_mr_horizontal=output\mrhorizontalstrip
 
 REM Move to the base dome2rect folder
 cd C:\dome2rect\
@@ -79,12 +82,12 @@ FOR /L %%G IN (%start_frame%, %step_by_frames%, %end_frame%) DO (
 
     echo Top View
     bin\mpremap.exe -f scripts\%ptscript_top% -o %output_top%.%%G.%output_ext% %input%.%%G.%output_ext%
-    
+
     echo Merging Cubic Images
-    REM Build the 6 cubic faces into a cubemap3x2 layout
+    REM Build the 6 cubic faces into a horizontal cross layout
     REM Note: The ^ carets are for escaping the closing parentheses in the Imagemagick commands since they are happening inside the batch script's do loop
-    bin\imagemagick\imconvert.exe ( %output_front%.%%G.%output_ext% %output_right%.%%G.%output_ext% %output_back%.%%G.%output_ext% +append ^) ( %output_left%.%%G.%output_ext% %output_top%.%%G.%output_ext% %output_bottom%.%%G.%output_ext% +append ^) -background black -append %output_cube3x2%.%%G.%output_ext%
-    echo Saving Image: %output_cube3x2%.%%G.%output_ext%
+    bin\imagemagick\imconvert.exe %output_left%.%%G.%output_ext% %output_right%.%%G.%output_ext% %output_bottom%.%%G.%output_ext% ( %output_top%.%%G.%output_ext% -flip ^) %output_back%.%%G.%output_ext% %output_front%.%%G.%output_ext% +append %output_cube_mr_horizontal%.%%G.%output_ext%
+    echo Saving Image: %output_cube_mr_horizontal%.%%G.%output_ext%
   ) else (
     echo Warning: %input%.%%G.%output_ext% image was not found.
   )
@@ -96,4 +99,4 @@ echo.
 
 REM echo Loading frames into viewer...
 PAUSE
-REM C:\dome2rect\review.bat %output_cube3x2%.%%d.%output_ext%
+REM C:\dome2rect\review.bat %output_cube_mr_horizontal%.%%d.%output_ext%

@@ -1,7 +1,7 @@
 @ECHO OFF
-@title latlong2cyl v1.3 - immersive transformations
+@title latlong2cyl v1.4 - immersive transformations
 
-echo latlong2rect v1.3 - May 6, 2015
+echo latlong2rect v1.4 - November 18, 2015
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo latlong2cyl converts a latitude/longitude image sequence into a cylindrical
