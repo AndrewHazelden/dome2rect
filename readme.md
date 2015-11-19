@@ -7,7 +7,12 @@ Dome2rect is a command line script that uses the open source Panotool library + 
 **Note:** Windows 7 or higher is required to use the tools.
 
 ### Changes in Version 1.4 ###
-New in Dome2rect version 1.4 is support for converting Latlong Stereo images into the GearVR Stereo cubic format, and a LatLong to mental ray cube1 horizontal strip format conversion.
+
+New in Dome2rect version 1.4 is support for converting LatLong Stereo images into the GearVR Stereo cubic format, and a LatLong to mental ray cube1 horizontal strip format conversion.
+
+### Changes in Version 1.3 ###
+
+New in Dome2rect version 1.3 is support for LatLong to cubic, horizontal cross, vertical cross, and cubemap3x2 conversions.
 
 ## Download ##
 
@@ -232,7 +237,6 @@ If you want the dome2rect script to process a 4 digit padded image sequence chan
 > @set ptscript=dome2rect  
 > @set input=input\zosma.%%.4d.jpg  
 > @set output=output\sequence.%%d.jpg  
-
 
 
 * * *
