@@ -51,19 +51,19 @@ p f0 w1024 h1024 v90
 o f4 v360 r180 y0 p180 b0
 
 # latlong image to a 1536p cubic format
-#p f2 w1536 h1536 v90
+#p f0 w1536 h1536 v90
 #o f4 v360 r180 y0 p180 b0
 
 # latlong image to a 2048p cubic format
-#p f2 w2048 h2048 v90
+#p f0 w2048 h2048 v90
 #o f4 v360 r180 y0 p180 b0
 
 # latlong image to a 3072p cubic format
-#p f2 w3072 h3072 v90
+#p f0 w3072 h3072 v90
 #o f4 v360 r180 y0 p180 b0
 
 # latlong image to a 4096p cubic format
-#p f2 w4096 h4096 v90
+#p f0 w4096 h4096 v90
 #o f4 v360 r180 y0 p180 b0
 
 m i2

@@ -1,4 +1,4 @@
-# Dome2rect v1.4 - 2015-11-18 #
+# Dome2rect v1.4 - 2015-11-20 #
 by Andrew Hazelden
 
 ## Overview ##
