@@ -6,6 +6,8 @@ Dome2rect is a command line script that uses the open source Panotool library + 
 
 **Note:** Windows 7 or higher is required to use the tools.
 
+*Dome2rect is distributed under the GPL v3 license.*
+
 ### Changes in Version 1.4 ###
 
 New in Dome2rect version 1.4 is support for converting LatLong Stereo images into the GearVR Stereo cubic format, and a LatLong to mental ray cube1 horizontal strip format conversion.
