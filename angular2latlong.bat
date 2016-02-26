@@ -4,7 +4,7 @@
 echo angular2latlong v1.4 - November 18, 2015
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
-echo angular2latlong converts a 360 degree angu;ar fisheye image sequence
+echo angular2latlong converts a 360 degree angular fisheye image sequence
 echo into the latlong format using the moving panorama program by 
 echo Helmut Dersch and FFMPEG.
 echo ----------------------------------------------------------------------
