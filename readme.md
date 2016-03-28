@@ -10,7 +10,7 @@ Dome2rect is a command line script that uses the open source Panotool library + 
 
 ### Changes in Version 1.5 ###
 
-New in Dome2rect version 1.5 is a `movie2imagesequence.bat` script that makes it easy to extract image sequences from any .mp4 movies placed in the dome2rect input folder.
+New in Dome2rect version 1.5 is a `movie2imagesequence.bat` script that makes it easy to extract image sequences from any .mp4 movies placed in the dome2rect input folder. Also added is a script `alphaextract.bat` that extracts a transparent mask from footage and saves it into an RGB image file in the output folder.
 
 ### Changes in Version 1.4 ###
 
@@ -84,6 +84,9 @@ When the rect2dome output image is viewed in a fulldome simulator it looks like 
 The tool is an early alpha release and will be improved over time.  Right now the only image format enabled for input/output is .jpg files and a UNIX .pnm image format. In the future all the common image/video formats could be supported since the FFMPEG library is used for format conversions.
 
 I created the following example .bat scripts to show what is possible:
+
+**alphaextract.bat**  
+This script extracts a transparent mask from footage and saves it into an RGB image file in the output folder.
 
 **angular2cyl.bat**  
 Converts a an angular fisheye image to a cylindrical image.

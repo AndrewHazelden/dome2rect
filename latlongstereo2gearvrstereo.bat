@@ -1,7 +1,7 @@
 @ECHO OFF
-@title latlongstereo2gearvrstereo v1.4 - immersive transformations
+@title latlongstereo2gearvrstereo v1.5 - immersive transformations
 
-echo latlongstereo2gearvrstereo v1.4 - November 20, 2015
+echo latlongstereo2gearvrstereo v1.5 - 2016-03-28
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo latlongstereo2gearvrstereo converts a left and right latlong stereo

@@ -298,7 +298,7 @@ img {
 <p><strong>Note:</strong> Windows 7 or higher is required to use the tools.</p>
 <p><em>Dome2rect is distributed under the GPL v3 license.</em></p>
 <h3>Changes in Version 1.5</h3>
-<p>New in Dome2rect version 1.5 is a <code>movie2imagesequence.bat</code> script that makes it easy to extract image sequences from any .mp4 movies placed in the dome2rect input folder.</p>
+<p>New in Dome2rect version 1.5 is a <code>movie2imagesequence.bat</code> script that makes it easy to extract image sequences from any .mp4 movies placed in the dome2rect input folder. Also added is a script <code>alphaextract.bat</code> that extracts a transparent mask from footage and saves it into an RGB image file in the output folder.</p>
 <h3>Changes in Version 1.4</h3>
 <p>New in Dome2rect version 1.4 is support for converting LatLong Stereo images into the GearVR Stereo cubic format, and a LatLong to mental ray cube1 horizontal strip format conversion.</p>
 <h3>Changes in Version 1.3</h3>
@@ -343,6 +343,8 @@ This image was re-projected into a domemaster fisheye format.</p>
 <h2>Batch Script Notes</h2>
 <p>The tool is an early alpha release and will be improved over time.  Right now the only image format enabled for input/output is .jpg files and a UNIX .pnm image format. In the future all the common image/video formats could be supported since the FFMPEG library is used for format conversions.</p>
 <p>I created the following example .bat scripts to show what is possible:</p>
+<p><strong>alphaextract.bat</strong><br />
+This script extracts a transparent mask from footage and saves it into an RGB image file in the output folder.</p>
 <p><strong>angular2cyl.bat</strong><br />
 Converts a an angular fisheye image to a cylindrical image.</p>
 <p><strong>angular2latlong.bat</strong><br />

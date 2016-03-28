@@ -1,7 +1,7 @@
 @ECHO OFF
-@title angular2cyl v1.4 - immersive transformations
+@title angular2cyl v1.5 - immersive transformations
 
-echo angular2cyl v1.4 - November 18, 2015
+echo angular2cyl v1.5 - 2016-03-28
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo angular2cyl converts an angular fisheye image sequence into the cylinder 

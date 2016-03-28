@@ -1,7 +1,7 @@
 @ECHO OFF
-@title latlong2dome v1.4 - immersive transformations
+@title latlong2dome v1.5 - immersive transformations
 
-echo latlong2dome v1.4 - November 18, 2015
+echo latlong2dome v1.5 - 2016-03-28
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo latlong2dome converts a latitude/longitude image sequence into dome

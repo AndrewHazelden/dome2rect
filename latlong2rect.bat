@@ -1,10 +1,10 @@
 @ECHO OFF
-@title latlong2rect v1.4 - immersive transformations
+@title latlong2rect v1.5 - immersive transformations
 
-echo latlong2rect v1.4 - November 18, 2015
+echo latlong2rect v1.5 - 2016-03-28
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
-echo latlong2rect converts a latitude/longitude image sequence into rectilinear
+echo latlong2rect converts a LatLong image sequence into rectilinear
 echo format using the moving panorama program by Helmut Dersch and FFMPEG.
 echo ----------------------------------------------------------------------
 echo Check out the PTStitcher wiki for the script syntax:

@@ -1,7 +1,7 @@
 @ECHO OFF
-@title latlong2verticalcross v1.4 - immersive transformations
+@title latlong2verticalcross v1.5 - immersive transformations
 
-echo latlong2verticalcross v1.4 - November 18, 2015
+echo latlong2verticalcross v1.5 - 2016-03-28
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo latlong2verticalcross converts a latlong formatted image sequence

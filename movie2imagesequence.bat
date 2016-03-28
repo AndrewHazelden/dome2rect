@@ -1,7 +1,7 @@
 @ECHO OFF
-@title Movie To Image Sequence v1.4 
+@title Movie To Image Sequence v1.5 
 
-echo Movie To Image Sequence Script v1.4 - 2016-03-28
+echo Movie To Image Sequence Script v1.5 - 2016-03-28
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo This script will extract image sequence frames from all of the mp4
