@@ -291,12 +291,14 @@ img {
 </style>
 </head>
 <body>
-<h1>Dome2rect v1.4 - 2015-11-20</h1>
+<h1>Dome2rect v1.5 - 2016-03-28</h1>
 <p>by Andrew Hazelden</p>
 <h2>Overview</h2>
 <p>Dome2rect is a command line script that uses the open source Panotool library + MPRemap  application to automate the process of converting image sequences between multiple panoramic formats. I created this script because I wanted to make it simpler to convert a fulldome movie trailer into a &quot;flat screen&quot; rectilinear format for posting on sites like YouTube.</p>
 <p><strong>Note:</strong> Windows 7 or higher is required to use the tools.</p>
 <p><em>Dome2rect is distributed under the GPL v3 license.</em></p>
+<h3>Changes in Version 1.5</h3>
+<p>New in Dome2rect version 1.5 is a <code>movie2imagesequence.bat</code> script that makes it easy to extract image sequences from any .mp4 movies placed in the dome2rect input folder.</p>
 <h3>Changes in Version 1.4</h3>
 <p>New in Dome2rect version 1.4 is support for converting LatLong Stereo images into the GearVR Stereo cubic format, and a LatLong to mental ray cube1 horizontal strip format conversion.</p>
 <h3>Changes in Version 1.3</h3>
@@ -367,6 +369,8 @@ Converts a latitude/longitude image to a cubic format that has a single image ou
 <p><strong>latlongstereo2gearvrstereo.bat</strong><br />
 Converts a pair of latitude/longitude stereo images into a cubic format that has a single image output with a Samsung GearVR Stereo horizontal strip arrangement.</p>
 <p>The left LatLong frames in the image sequence should be named <code>&lt;name&gt;_L.#.jpg</code>, and the right LatLong frames in the image sequence should be named <code>&lt;name&gt;_R.#.jpg</code>.</p>
+<p><strong>movie2imagesequence.bat</strong><br />
+Extract image sequence frames from all of the .mp4 movie files in the input folder using ffmpeg.</p>
 <p><strong>rect2dome.bat</strong><br />
 Converts a rectilinear image to a fisheye image</p>
 <p><strong>review.bat</strong><br />
