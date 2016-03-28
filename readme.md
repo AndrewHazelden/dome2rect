@@ -1,4 +1,4 @@
-# Dome2rect v1.4 - 2015-11-20 #
+# Dome2rect v1.5 - 2016-03-28 #
 by Andrew Hazelden
 
 ## Overview ##
@@ -7,6 +7,10 @@ Dome2rect is a command line script that uses the open source Panotool library + 
 **Note:** Windows 7 or higher is required to use the tools.
 
 *Dome2rect is distributed under the GPL v3 license.*
+
+### Changes in Version 1.5 ###
+
+New in Dome2rect version 1.5 is a `movie2imagesequence.bat` script that makes it easy to extract image sequences from any .mp4 movies placed in the dome2rect input folder.
 
 ### Changes in Version 1.4 ###
 
@@ -120,6 +124,9 @@ Converts a latitude/longitude image to a cubic format that has a single image ou
 Converts a pair of latitude/longitude stereo images into a cubic format that has a single image output with a Samsung GearVR Stereo horizontal strip arrangement.
 
 The left LatLong frames in the image sequence should be named `<name>_L.#.jpg`, and the right LatLong frames in the image sequence should be named `<name>_R.#.jpg`.
+
+**movie2imagesequence.bat**  
+Extract image sequence frames from all of the .mp4 movie files in the input folder using ffmpeg.
 
 **rect2dome.bat**  
 Converts a rectilinear image to a fisheye image
