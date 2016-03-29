@@ -17,7 +17,7 @@ REM Note: You need to add "" quotes around MovieSequencePath values if there are
 
 REM @set imagemagickTool="C:\Program Files\ImageMagick-6.9.3-Q16\convert.exe"
 REM @set ffmpegtool="C:\ffmpeg\bin\ffmpeg.exe"
-@set imagemagickTool="C:\dome2rect\bin\convert.exe"
+@set imagemagickTool="C:\dome2rect\bin\imconvert.exe"
 @set ffmpegtool="C:\dome2rect\bin\ffmpeg.exe"
 
 REM Sound File
