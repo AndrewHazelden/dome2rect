@@ -1,4 +1,4 @@
-# Dome2rect v1.5 - 2016-03-28 #
+# Dome2rect v1.5.1 - 2016-03-29 #
 by Andrew Hazelden
 
 ## Overview ##
@@ -10,7 +10,7 @@ Dome2rect is a command line script that uses the open source Panotool library + 
 
 ### Changes in Version 1.5 ###
 
-New in Dome2rect version 1.5 is a `movie2imagesequence.bat` script that makes it easy to extract image sequences from any .mp4 movies placed in the dome2rect input folder. Also added is a script `alphaextract.bat` that extracts a transparent mask from footage and saves it into an RGB image file in the output folder.
+New in Dome2rect version 1.5 is a `movie2imagesequence.bat` script that makes it easy to extract image sequences from any .mp4 movies placed in the dome2rect input folder. Also added a script `alphaextract.bat` that extracts a transparent mask from footage and saves it into an RGB image file in the output folder. The `encodemovie.bat` script will re-encode a mp4/mov/mkv/avi movie file with ffmpeg into a compact mp4 movie to make it playback better on mobile/tablets/desktop systems.
 
 ### Changes in Version 1.4 ###
 
@@ -96,6 +96,9 @@ Converts an angular fisheye image to a latitude/longitude (equirectangular) imag
 
 **dome2rect.bat**  
 Converts a 180 degree domemaster format angular fisheye image to a rectilinear image format.
+
+**encodemovie.bat**  
+Re-encode a mp4/mov/mkv/avi movie file with ffmpeg into a compact mp4 movie to make it playback better on mobile/tablets/desktop systems.
 
 **latlong2cubemap3x2.bat**  
 Converts a latitude/longitude image to a cubic format that has a single image output with a Cubemap 3x2 arrangement with 3 cubic faces on the top row, and 3 cubic faces on the bottom row. 
