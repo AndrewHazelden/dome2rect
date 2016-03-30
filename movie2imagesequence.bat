@@ -27,8 +27,8 @@ REM input image extension:
 @set inputExt=mp4
 
 REM output image extension:
-REM @set outputExt=png
-@set outputExt=jpg
+@set outputExt=png
+REM @set outputExt=tif
 
 REM input image folder
 @set inputFolder=%MovieSequencePath%\input
@@ -39,8 +39,8 @@ REM output image folder
 REM @set outputFolder=C:\dome2rect\output
 
 REM FFmpeg Options holds the string of options to be used when processing the imagery. 
-REM Note: If you need to use parenthesis () for order of operations, make sure to use a carrat before the 
-REM closing parenthsis ( -r 25 ^) so it is handled correctly by the windows command prompt.
+REM Note: If you need to use parenthesis () for order of operations, make sure to use a carat before the 
+REM closing parenthesis ( -r 25 ^) so it is handled correctly by the windows command prompt.
 REM The ffmpegOptions defaults are Frame Rate = -r 29.97 and  Maximum Image Quality = -q:v 1 
 @set ffmpegOptions=-r 29.97 -q:v 1 
 

@@ -291,14 +291,14 @@ img {
 </style>
 </head>
 <body>
-<h1>Dome2rect v1.5.1 - 2016-03-29</h1>
+<h1>Dome2rect v1.5.2 - 2016-03-30</h1>
 <p>by Andrew Hazelden</p>
 <h2>Overview</h2>
 <p>Dome2rect is a command line script that uses the open source Panotool library + MPRemap  application to automate the process of converting image sequences between multiple panoramic formats. I created this script because I wanted to make it simpler to convert a fulldome movie trailer into a &quot;flat screen&quot; rectilinear format for posting on sites like YouTube.</p>
 <p><strong>Note:</strong> Windows 7 or higher is required to use the tools.</p>
 <p><em>Dome2rect is distributed under the GPL v3 license.</em></p>
 <h3>Changes in Version 1.5</h3>
-<p>New in Dome2rect version 1.5 is a <code>movie2imagesequence.bat</code> script that makes it easy to extract image sequences from any .mp4 movies placed in the dome2rect input folder. Also added a script <code>alphaextract.bat</code> that extracts a transparent mask from footage and saves it into an RGB image file in the output folder. The <code>encodemovie.bat</code> script will re-encode a mp4/mov/mkv/avi movie file with ffmpeg into a compact mp4 movie to make it playback better on mobile/tablets/desktop systems.</p>
+<p>New in Dome2rect version 1.5 is a <code>movie2imagesequence.bat</code> script that makes it easy to extract image sequences from any .mp4 movies placed in the dome2rect input folder. Also added a script <code>alphaextract.bat</code> that extracts a transparent mask from footage and saves it into an RGB image file in the output folder. The <code>encodemovie.bat</code> script will re-encode a mp4/mov/mkv/avi movie file with ffmpeg into a compact mp4 movie to make it playback better on mobile/tablets/desktop systems. The <code>imagesequence2movie.bat</code> script will turn your image sequence into an mp4 movie using ffmpeg.</p>
 <h3>Changes in Version 1.4</h3>
 <p>New in Dome2rect version 1.4 is support for converting LatLong Stereo images into the GearVR Stereo cubic format, and a LatLong to mental ray cube1 horizontal strip format conversion.</p>
 <h3>Changes in Version 1.3</h3>
@@ -353,6 +353,8 @@ Converts an angular fisheye image to a latitude/longitude (equirectangular) imag
 Converts a 180 degree domemaster format angular fisheye image to a rectilinear image format.</p>
 <p><strong>encodemovie.bat</strong><br />
 Re-encode a mp4/mov/mkv/avi movie file with ffmpeg into a compact mp4 movie to make it playback better on mobile/tablets/desktop systems.</p>
+<p><strong>imagesequence2movie.bat</strong>
+This script will take an image sequence along with an audio file and create an mp4 movie file using ffmpeg.</p>
 <p><strong>latlong2cubemap3x2.bat</strong><br />
 Converts a latitude/longitude image to a cubic format that has a single image output with a Cubemap 3x2 arrangement with 3 cubic faces on the top row, and 3 cubic faces on the bottom row. </p>
 <p>The Cubemap 3x2 format was popularized by <a href="http://ggnome.com/pano2vr">Garden Gnome Software's Pano2VR</a> Panoramic tools.</p>
