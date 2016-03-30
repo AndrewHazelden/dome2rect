@@ -27,8 +27,7 @@ REM Image Sequence Frame Rate
 @set frameRate=30
 
 REM Image Sequence Starting Frame Number
-@set startFrame=995
-REM @set startFrame=0
+@set startFrame=0
 REM @set startFrame=1
 
 REM input image folder
