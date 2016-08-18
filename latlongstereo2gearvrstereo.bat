@@ -1,7 +1,7 @@
 @ECHO OFF
-@title latlongstereo2gearvrstereo v1.5 - immersive transformations
+@title latlongstereo2gearvrstereo v1.6 - immersive transformations
 
-echo latlongstereo2gearvrstereo v1.5 - 2016-03-28
+echo latlongstereo2gearvrstereo v1.6 - 2016-08-18 
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo latlongstereo2gearvrstereo converts a left and right latlong stereo
@@ -14,6 +14,9 @@ echo http://wiki.panotools.org/PTStitcher
 REM Note: mpremap accepts piped .pnm image streams
 
 REM Image sequences are processed with unpadded sequence frame extensions.
+
+REM output image folder
+@set outputFolder=C:\dome2rect\output
 
 REM Start/End Sequence Frame Range:
 REM @set start_frame=1
@@ -44,23 +47,25 @@ REM Output image extension:
 
 REM Output image - 6 extracted cubemap faces per Left/Right camera view:
 REM Right Cube Views
-@set output_back_R=output\cubemap_back_R
-@set output_bottom_R=output\cubemap_bottom_R
-@set output_front_R=output\cubemap_front_R
-@set output_left_R=output\cubemap_left_R
-@set output_right_R=output\cubemap_right_R
-@set output_top_R=output\cubemap_top_R
+@set output_back_R=%outputFolder%\back_R
+@set output_bottom_R=%outputFolder%\bottom_R
+@set output_front_R=%outputFolder%\front_R
+@set output_left_R=%outputFolder%\left_R
+@set output_right_R=%outputFolder%\right_R
+@set output_top_R=%outputFolder%\top_R
 REM Left Cube Views
-@set output_back_L=output\cubemap_back_L
-@set output_bottom_L=output\cubemap_bottom_L
-@set output_front_L=output\cubemap_front_L
-@set output_left_L=output\cubemap_left_L
-@set output_right_L=output\cubemap_right_L
-@set output_top_L=output\cubemap_top_L
+@set output_back_L=%outputFolder%\back_L
+@set output_bottom_L=%outputFolder%\bottom_L
+@set output_front_L=%outputFolder%\front_L
+@set output_left_L=%outputFolder%\left_L
+@set output_right_L=%outputFolder%\right_L
+@set output_top_L=%outputFolder%\top_L
 
+REM Output image - final stitched cubic GearVR stereo horizontal strip
+@set output_gearvr=%outputFolder%\gearvr_stereo
 
-REM Output image - final stitched cubic GearVR stereo horitzontal strip
-@set output_gearvr=output\gearvr_stereo
+REM Create the output folder if it doesn't exist
+IF exist %outputFolder% ( echo The %outputFolder% folder exists ) ELSE ( mkdir %outputFolder% && echo The %outputFolder% folder has been created)
 
 REM Move to the base dome2rect folder
 cd C:\dome2rect\

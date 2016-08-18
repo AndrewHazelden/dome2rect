@@ -291,16 +291,19 @@ img {
 </style>
 </head>
 <body>
-<h1>Dome2rect v1.5.2 - 2016-03-30</h1>
+<h1>Dome2rect v1.6 - 2016-08-18</h1>
 <p>by Andrew Hazelden</p>
 <h2>Overview</h2>
 <p>Dome2rect is a command line script that uses the open source Panotool library + MPRemap  application to automate the process of converting image sequences between multiple panoramic formats. I created this script because I wanted to make it simpler to convert a fulldome movie trailer into a &quot;flat screen&quot; rectilinear format for posting on sites like YouTube.</p>
 <p><strong>Note:</strong> Windows 7 or higher is required to use the tools.</p>
 <p><em>Dome2rect is distributed under the GPL v3 license.</em></p>
+<h2>Version History</h2>
+<h3>Changes in Version 1.6</h3>
+<p>New in Dome2rect version 1.6 is a <code>latlong2gearvrmono.bat</code> script that converts latlong/equirectangular/spherical imagery into the Gear VR mono horizontal strip cubemap image format. The <code>cubic2gearvrmono.bat</code> script converts 6 cubemap images into a Gear VR mono horizontal strip cubemap image format. Updated the scripts to automatically create the output folder if required. Updated the file naming of the intermediate cubemap frames.</p>
 <h3>Changes in Version 1.5</h3>
 <p>New in Dome2rect version 1.5 is a <code>movie2imagesequence.bat</code> script that makes it easy to extract image sequences from any .mp4 movies placed in the dome2rect input folder. Also added a script <code>alphaextract.bat</code> that extracts a transparent mask from footage and saves it into an RGB image file in the output folder. The <code>encodemovie.bat</code> script will re-encode a mp4/mov/mkv/avi movie file with ffmpeg into a compact mp4 movie to make it playback better on mobile/tablets/desktop systems. The <code>imagesequence2movie.bat</code> script will turn your image sequence into an mp4 movie using ffmpeg.</p>
 <h3>Changes in Version 1.4</h3>
-<p>New in Dome2rect version 1.4 is support for converting LatLong Stereo images into the GearVR Stereo cubic format, and a LatLong to mental ray cube1 horizontal strip format conversion.</p>
+<p>New in Dome2rect version 1.4 is support for converting LatLong Stereo images into the Gear VR Stereo cubic format, and a LatLong to mental ray cube1 horizontal strip format conversion.</p>
 <h3>Changes in Version 1.3</h3>
 <p>New in Dome2rect version 1.3 is support for LatLong to cubic, horizontal cross, vertical cross, and cubemap3x2 conversions.</p>
 <h2>Download</h2>
@@ -341,39 +344,43 @@ This image was re-projected into a domemaster fisheye format.</p>
 <p><strong>Note:</strong> The <a href="https://github.com/zicher3d-org/domemaster-stereo-shader/wiki/DomeViewer">Domemaster Stereo shader tool &quot;Dome Viewer&quot;</a> was used to preview the rect to dome conversion.</p>
 <hr />
 <h2>Batch Script Notes</h2>
-<p>The tool is an early alpha release and will be improved over time.  Right now the only image format enabled for input/output is .jpg files and a UNIX .pnm image format. In the future all the common image/video formats could be supported since the FFMPEG library is used for format conversions.</p>
+<p>Right now the only image format enabled for input/output is .jpg files and a UNIX .pnm image format.</p>
 <p>I created the following example .bat scripts to show what is possible:</p>
 <p><strong>alphaextract.bat</strong><br />
 This script extracts a transparent mask from footage and saves it into an RGB image file in the output folder.</p>
 <p><strong>angular2cyl.bat</strong><br />
 Converts a an angular fisheye image to a cylindrical image.</p>
 <p><strong>angular2latlong.bat</strong><br />
-Converts an angular fisheye image to a latitude/longitude (equirectangular) image.</p>
+Converts an angular fisheye image to a latlong/equirectangular/spherical image.</p>
+<p><strong>cubic2gearvrmono.bat</strong><br />
+Converts 6 cubemap images into a Gear VR mono horizontal strip cubemap.</p>
 <p><strong>dome2rect.bat</strong><br />
 Converts a 180 degree domemaster format angular fisheye image to a rectilinear image format.</p>
 <p><strong>encodemovie.bat</strong><br />
 Re-encode a mp4/mov/mkv/avi movie file with ffmpeg into a compact mp4 movie to make it playback better on mobile/tablets/desktop systems.</p>
-<p><strong>imagesequence2movie.bat</strong>
+<p><strong>imagesequence2movie.bat</strong><br />
 This script will take an image sequence along with an audio file and create an mp4 movie file using ffmpeg.</p>
 <p><strong>latlong2cubemap3x2.bat</strong><br />
-Converts a latitude/longitude image to a cubic format that has a single image output with a Cubemap 3x2 arrangement with 3 cubic faces on the top row, and 3 cubic faces on the bottom row. </p>
+Converts a latlong/equirectangular/spherical image to a cubic format that has a single image output with a Cubemap 3x2 arrangement with 3 cubic faces on the top row, and 3 cubic faces on the bottom row. </p>
 <p>The Cubemap 3x2 format was popularized by <a href="http://ggnome.com/pano2vr">Garden Gnome Software's Pano2VR</a> Panoramic tools.</p>
 <p><strong>latlong2cubic.bat</strong><br />
-Converts a latitude/longitude image to a set of 6 cubic face images.</p>
-<p><strong>latlong2cyl.bat</strong>
-Converts a latitude/longitude image to a cylindrical image.</p>
+Converts a latlong/equirectangular/spherical image to a set of 6 cubic face images.</p>
+<p><strong>latlong2cyl.bat</strong><br />
+Converts a latlong/equirectangular/spherical image to a cylindrical image.</p>
 <p><strong>latlong2dome.bat</strong><br />
-Converts a latitude/longitude (equirectangular) image to a fulldome image.</p>
+Converts a latlong/equirectangular/spherical image to a fulldome image.</p>
+<p><strong>latlong2gearvrmono.bat</strong><br />
+Converts latlong/equirectangular/spherical image into a Gear VR mono horizontal strip cubemap image format.</p>
 <p><strong>latlong2horizontalcross.bat</strong><br />
-Converts a latitude/longitude image to a cubic format that has a single image output with a horizontal cross arrangement.</p>
+Converts a latlong/equirectangular/spherical image to a cubic format that has a single image output with a horizontal cross arrangement.</p>
 <p><strong>latlong2mentalrayhorizontalstripcube1.bat</strong><br />
-Converts a latitude/longitude image into a cubic format that has a single image output with a mental ray cube1 horizontal strip arrangement.</p>
+Converts a latlong/equirectangular/spherical image into a cubic format that has a single image output with a mental ray cube1 horizontal strip arrangement.</p>
 <p><strong>latlong2rect.bat</strong><br />
-Converts a latitude/longitude (equirectangular) image to a rectilinear image.</p>
+Converts a latlong/equirectangular/spherical image to a rectilinear image.</p>
 <p><strong>latlong2verticalcross.bat</strong><br />
-Converts a latitude/longitude image to a cubic format that has a single image output with a vertical cross arrangement.</p>
+Converts a latlong/equirectangular/spherical image to a cubic format that has a single image output with a vertical cross arrangement.</p>
 <p><strong>latlongstereo2gearvrstereo.bat</strong><br />
-Converts a pair of latitude/longitude stereo images into a cubic format that has a single image output with a Samsung GearVR Stereo horizontal strip arrangement.</p>
+Converts a pair of latlong/equirectangular/spherical stereo images into a cubic format that has a single image output with a Samsung GearVR Stereo horizontal strip arrangement.</p>
 <p>The left LatLong frames in the image sequence should be named <code>&lt;name&gt;_L.#.jpg</code>, and the right LatLong frames in the image sequence should be named <code>&lt;name&gt;_R.#.jpg</code>.</p>
 <p><strong>movie2imagesequence.bat</strong><br />
 Extract image sequence frames from all of the .mp4 movie files in the input folder using ffmpeg.</p>

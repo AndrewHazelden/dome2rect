@@ -1,7 +1,7 @@
 @ECHO OFF
-@title latlong2cubic v1.5 - immersive transformations
+@title latlong2cubic v1.6 - immersive transformations
 
-echo latlong2cubic v1.5 - 2016-03-28
+echo latlong2cubic v1.6 - 2016-08-18
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo latlong2cubic converts a latlong formatted image sequence
@@ -19,6 +19,9 @@ REM Use the exact image name for a single frame (eg. image.0009.jpg)
 REM Use %%d.jpg for an unpadded image sequence (eg:  9.jpg)
 REM Use %%.4d.jpg for a padded image sequence (eg: 0009.jpg)
 
+REM output image folder
+@set outputFolder=C:\dome2rect\output
+
 REM PT Stitcher Scripts
 @set ptscript_back=latlong2cubemap_back
 @set ptscript_bottom=latlong2cubemap_bottom
@@ -30,23 +33,26 @@ REM PT Stitcher Scripts
 REM Still images
 @set input=input\latlong.jpg
 
-@set output_back=output\cubemap_back.jpg
-@set output_bottom=output\cubemap_bottom.jpg
-@set output_front=output\cubemap_front.jpg
-@set output_left=output\cubemap_left.jpg
-@set output_right=output\cubemap_right.jpg
-@set output_top=output\cubemap_top.jpg
+@set output_back=%outputFolder%\back.jpg
+@set output_bottom=%outputFolder%\bottom.jpg
+@set output_front=%outputFolder%\front.jpg
+@set output_left=%outputFolder%\left.jpg
+@set output_right=%outputFolder%\right.jpg
+@set output_top=%outputFolder%\top.jpg
 
 REM Moving images
 REM @set input=input\latlong.%%.4d.jpg
 REM @set input=input\latlong_sequence.%%.1d.jpg
 
-REM @set output_back=output\cubemap_back.%%.4d.jpg
-REM @set output_bottom=output\cubemap_bottom.%%.4d.jpg
-REM @set output_front=output\cubemap_front.%%.4d.jpg
-REM @set output_left=output\cubemap_left.%%.4d.jpg
-REM @set output_right=output\cubemap_right.%%.4d.jpg
-REM @set output_top=output\cubemap_top.%%.4d.jpg
+REM @set output_back=%outputFolder%\back.%%.4d.jpg
+REM @set output_bottom=%outputFolder%\bottom.%%.4d.jpg
+REM @set output_front=%outputFolder%\front.%%.4d.jpg
+REM @set output_left=%outputFolder%\left.%%.4d.jpg
+REM @set output_right=%outputFolder%\right.%%.4d.jpg
+REM @set output_top=%outputFolder%\top.%%.4d.jpg
+
+REM Create the output folder if it doesn't exist
+IF exist %outputFolder% ( echo The %outputFolder% folder exists ) ELSE ( mkdir %outputFolder% && echo The %outputFolder% folder has been created)
 
 REM Move to the base dome2rect folder
 cd C:\dome2rect\

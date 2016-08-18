@@ -1,4 +1,4 @@
-# Dome2rect v1.5.2 - 2016-03-30 #
+# Dome2rect v1.6 - 2016-08-18 #
 by Andrew Hazelden
 
 ## Overview ##
@@ -8,13 +8,19 @@ Dome2rect is a command line script that uses the open source Panotool library + 
 
 *Dome2rect is distributed under the GPL v3 license.*
 
+## Version History ##
+
+### Changes in Version 1.6 ###
+
+New in Dome2rect version 1.6 is a `latlong2gearvrmono.bat` script that converts latlong/equirectangular/spherical imagery into the Gear VR mono horizontal strip cubemap image format. The `cubic2gearvrmono.bat` script converts 6 cubemap images into a Gear VR mono horizontal strip cubemap image format. Updated the scripts to automatically create the output folder if required. Updated the file naming of the intermediate cubemap frames.
+
 ### Changes in Version 1.5 ###
 
 New in Dome2rect version 1.5 is a `movie2imagesequence.bat` script that makes it easy to extract image sequences from any .mp4 movies placed in the dome2rect input folder. Also added a script `alphaextract.bat` that extracts a transparent mask from footage and saves it into an RGB image file in the output folder. The `encodemovie.bat` script will re-encode a mp4/mov/mkv/avi movie file with ffmpeg into a compact mp4 movie to make it playback better on mobile/tablets/desktop systems. The `imagesequence2movie.bat` script will turn your image sequence into an mp4 movie using ffmpeg.
 
 ### Changes in Version 1.4 ###
 
-New in Dome2rect version 1.4 is support for converting LatLong Stereo images into the GearVR Stereo cubic format, and a LatLong to mental ray cube1 horizontal strip format conversion.
+New in Dome2rect version 1.4 is support for converting LatLong Stereo images into the Gear VR Stereo cubic format, and a LatLong to mental ray cube1 horizontal strip format conversion.
 
 ### Changes in Version 1.3 ###
 
@@ -81,7 +87,7 @@ When the rect2dome output image is viewed in a fulldome simulator it looks like 
 * * *
 
 ## Batch Script Notes ##
-The tool is an early alpha release and will be improved over time.  Right now the only image format enabled for input/output is .jpg files and a UNIX .pnm image format. In the future all the common image/video formats could be supported since the FFMPEG library is used for format conversions.
+Right now the only image format enabled for input/output is .jpg files and a UNIX .pnm image format.
 
 I created the following example .bat scripts to show what is possible:
 
@@ -92,7 +98,10 @@ This script extracts a transparent mask from footage and saves it into an RGB im
 Converts a an angular fisheye image to a cylindrical image.
 
 **angular2latlong.bat**  
-Converts an angular fisheye image to a latitude/longitude (equirectangular) image.
+Converts an angular fisheye image to a latlong/equirectangular/spherical image.
+
+**cubic2gearvrmono.bat**  
+Converts 6 cubemap images into a Gear VR mono horizontal strip cubemap.
 
 **dome2rect.bat**  
 Converts a 180 degree domemaster format angular fisheye image to a rectilinear image format.
@@ -100,37 +109,40 @@ Converts a 180 degree domemaster format angular fisheye image to a rectilinear i
 **encodemovie.bat**  
 Re-encode a mp4/mov/mkv/avi movie file with ffmpeg into a compact mp4 movie to make it playback better on mobile/tablets/desktop systems.
 
-**imagesequence2movie.bat**
+**imagesequence2movie.bat**  
 This script will take an image sequence along with an audio file and create an mp4 movie file using ffmpeg.
 
 **latlong2cubemap3x2.bat**  
-Converts a latitude/longitude image to a cubic format that has a single image output with a Cubemap 3x2 arrangement with 3 cubic faces on the top row, and 3 cubic faces on the bottom row. 
+Converts a latlong/equirectangular/spherical image to a cubic format that has a single image output with a Cubemap 3x2 arrangement with 3 cubic faces on the top row, and 3 cubic faces on the bottom row. 
 
 The Cubemap 3x2 format was popularized by [Garden Gnome Software's Pano2VR](http://ggnome.com/pano2vr) Panoramic tools.
 
 **latlong2cubic.bat**  
-Converts a latitude/longitude image to a set of 6 cubic face images.
+Converts a latlong/equirectangular/spherical image to a set of 6 cubic face images.
 
-**latlong2cyl.bat**
-Converts a latitude/longitude image to a cylindrical image.
+**latlong2cyl.bat**  
+Converts a latlong/equirectangular/spherical image to a cylindrical image.
 
 **latlong2dome.bat**  
-Converts a latitude/longitude (equirectangular) image to a fulldome image.
+Converts a latlong/equirectangular/spherical image to a fulldome image.
+
+**latlong2gearvrmono.bat**  
+Converts latlong/equirectangular/spherical image into a Gear VR mono horizontal strip cubemap image format.
 
 **latlong2horizontalcross.bat**  
-Converts a latitude/longitude image to a cubic format that has a single image output with a horizontal cross arrangement.
+Converts a latlong/equirectangular/spherical image to a cubic format that has a single image output with a horizontal cross arrangement.
 
 **latlong2mentalrayhorizontalstripcube1.bat**  
-Converts a latitude/longitude image into a cubic format that has a single image output with a mental ray cube1 horizontal strip arrangement.
+Converts a latlong/equirectangular/spherical image into a cubic format that has a single image output with a mental ray cube1 horizontal strip arrangement.
 
 **latlong2rect.bat**  
-Converts a latitude/longitude (equirectangular) image to a rectilinear image.
+Converts a latlong/equirectangular/spherical image to a rectilinear image.
 
 **latlong2verticalcross.bat**  
-Converts a latitude/longitude image to a cubic format that has a single image output with a vertical cross arrangement.
+Converts a latlong/equirectangular/spherical image to a cubic format that has a single image output with a vertical cross arrangement.
 
 **latlongstereo2gearvrstereo.bat**  
-Converts a pair of latitude/longitude stereo images into a cubic format that has a single image output with a Samsung GearVR Stereo horizontal strip arrangement.
+Converts a pair of latlong/equirectangular/spherical stereo images into a cubic format that has a single image output with a Samsung GearVR Stereo horizontal strip arrangement.
 
 The left LatLong frames in the image sequence should be named `<name>_L.#.jpg`, and the right LatLong frames in the image sequence should be named `<name>_R.#.jpg`.
 
@@ -230,7 +242,6 @@ m = Image Anti-Aliasing
 m i2 = smooth spline36 interpolation of the converted imagery
 
 </code></pre>
-
 
 
 ### Changing Input & Output File Names ###

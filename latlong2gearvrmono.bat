@@ -1,12 +1,12 @@
 @ECHO OFF
-@title latlong2mentalrayhorizontalstripcube1 v1.6 - immersive transformations
+@title latlong2gearvrmono v1.6 - immersive transformations
 
-echo latlong2mentalrayhorizontalstripcube1 v1.6 - 2016-08-18
+echo latlong2gearvrmono v1.6 - 2016-08-18
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
-echo latlong2mentalrayhorizontalstripcube1 converts a latlong formatted image 
-echo sequence into a cubic mental ray horizontal strip cube1 format using the
-echo moving panorama program by Helmut Dersch and Imagemagick.
+echo latlong2gearvrmono converts a latlong formatted image sequence
+echo into a GearVR cubic format using the moving panorama program 
+echo by Helmut Dersch and Imagemagick.
 echo ----------------------------------------------------------------------
 echo Check out the PTStitcher wiki for the script syntax:
 echo http://wiki.panotools.org/PTStitcher
@@ -37,13 +37,15 @@ REM PT Stitcher Scripts
 @set ptscript_right=latlong2cubemap_right
 @set ptscript_top=latlong2cubemap_top
 
-REM Input image filename prefix
-@set input=input\latlong_sequence
+REM Input image filename prefix 
+REM Example: The image filename prefix "CubeX_LatLong_L" would be used for the image named "CubeX_LatLong_L.1.jpg"
+@set input=input\CubeX_LatLong_L
 
 REM Output image extension:
 @set output_ext=jpg
 
-REM Output image - 6 extracted cubemap faces:
+REM Output image - 6 extracted cubemap faces per camera view:
+REM Cube Views
 @set output_back=%outputFolder%\back
 @set output_bottom=%outputFolder%\bottom
 @set output_front=%outputFolder%\front
@@ -51,8 +53,8 @@ REM Output image - 6 extracted cubemap faces:
 @set output_right=%outputFolder%\right
 @set output_top=%outputFolder%\top
 
-REM Output image - final stitched mr horizontal strip cube1
-@set output_cube_mr_horizontal=%outputFolder%\mrhorizontalstrip
+REM Output image - final stitched cubic GearVR horizontal strip
+@set output_gearvr=%outputFolder%\gearvr
 
 REM Create the output folder if it doesn't exist
 IF exist %outputFolder% ( echo The %outputFolder% folder exists ) ELSE ( mkdir %outputFolder% && echo The %outputFolder% folder has been created)
@@ -64,7 +66,7 @@ echo.
 
 FOR /L %%G IN (%start_frame%, %step_by_frames%, %end_frame%) DO (
 
-  REM Checking if the source image exists
+  REM Checking if the source left and right image exists
   if exist %input%.%%G.%output_ext% (
   
     echo.
@@ -79,7 +81,7 @@ FOR /L %%G IN (%start_frame%, %step_by_frames%, %end_frame%) DO (
 
     echo Front View
     bin\mpremap.exe -f scripts\%ptscript_front% -o %output_front%.%%G.%output_ext% %input%.%%G.%output_ext%
-
+    
     echo left View
     bin\mpremap.exe -f scripts\%ptscript_left% -o %output_left%.%%G.%output_ext% %input%.%%G.%output_ext%
 
@@ -90,12 +92,13 @@ FOR /L %%G IN (%start_frame%, %step_by_frames%, %end_frame%) DO (
     bin\mpremap.exe -f scripts\%ptscript_top% -o %output_top%.%%G.%output_ext% %input%.%%G.%output_ext%
 
     echo Merging Cubic Images
-    REM Build the 6 cubic faces into a horizontal cross layout
+    REM Build the 6 cubic faces into a GearVR horizontal strip layout
     REM Note: The ^ carets are for escaping the closing parentheses in the Imagemagick commands since they are happening inside the batch script's do loop
-    bin\imagemagick\imconvert.exe %output_left%.%%G.%output_ext% %output_right%.%%G.%output_ext% %output_bottom%.%%G.%output_ext% ( %output_top%.%%G.%output_ext% -flip ^) %output_back%.%%G.%output_ext% %output_front%.%%G.%output_ext% +append %output_cube_mr_horizontal%.%%G.%output_ext%
-    echo Saving Image: %output_cube_mr_horizontal%.%%G.%output_ext%
+    bin\imagemagick\imconvert.exe %output_left%.%%G.%output_ext% %output_right%.%%G.%output_ext% ( %output_top%.%%G.%output_ext% -rotate 180 ^) ( %output_bottom%.%%G.%output_ext% -rotate 180 ^) %output_back%.%%G.%output_ext% %output_front%.%%G.%output_ext% +append %output_gearvr%.%%G.%output_ext%
+    
+    echo Saving Image: %output_gearvr%.%%G.%output_ext%
   ) else (
-    echo Warning: %input%.%%G.%output_ext% image was not found.
+    echo Warning: The %input%.%%G.%output_ext% image was not found.
   )
 )
 
@@ -105,4 +108,4 @@ echo.
 
 REM echo Loading frames into viewer...
 PAUSE
-REM C:\dome2rect\review.bat %output_cube_mr_horizontal%.%%d.%output_ext%
+REM C:\dome2rect\review.bat %output_gearvr%.%%d.%output_ext%

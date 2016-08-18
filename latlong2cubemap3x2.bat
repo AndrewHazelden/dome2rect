@@ -1,7 +1,7 @@
 @ECHO OFF
-@title latlong2cubemap3x2 v1.5 - immersive transformations
+@title latlong2cubemap3x2 v1.6 - immersive transformations
 
-echo latlong2cubemap3x2 v1.5 - 2016-03-28
+echo latlong2cubemap3x2 v1.6 - 2016-08-18
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo latlong2cubemap3x2 converts a latlong formatted image sequence
@@ -14,6 +14,9 @@ echo http://wiki.panotools.org/PTStitcher
 REM Note: mpremap accepts piped .pnm image streams
 
 REM Image sequences are processed with unpadded sequence frame extensions.
+
+REM output image folder
+@set outputFolder=C:\dome2rect\output
 
 REM Start/End Sequence Frame Range:
 REM @set start_frame=1
@@ -38,15 +41,18 @@ REM Output image extension:
 @set output_ext=jpg
 
 REM Output image - 6 extracted cubemap faces:
-@set output_back=output\cubemap_back
-@set output_bottom=output\cubemap_bottom
-@set output_front=output\cubemap_front
-@set output_left=output\cubemap_left
-@set output_right=output\cubemap_right
-@set output_top=output\cubemap_top
+@set output_back=%outputFolder%\back
+@set output_bottom=%outputFolder%\bottom
+@set output_front=%outputFolder%\front
+@set output_left=%outputFolder%\left
+@set output_right=%outputFolder%\right
+@set output_top=%outputFolder%\top
 
 REM Output image - final stitched 3x2 cubemap
-@set output_cube3x2=output\cubemap3x2
+@set output_cube3x2=%outputFolder%\cubemap3x2
+
+REM Create the output folder if it doesn't exist
+IF exist %outputFolder% ( echo The %outputFolder% folder exists ) ELSE ( mkdir %outputFolder% && echo The %outputFolder% folder has been created)
 
 REM Move to the base dome2rect folder
 cd C:\dome2rect\

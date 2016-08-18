@@ -1,7 +1,7 @@
 @ECHO OFF
-@title Image Sequence To Movie  v1.5 
+@title Image Sequence To Movie  v1.6 
 
-echo Image Sequence To Movie v1.5 - 2016-03-30
+echo Image Sequence To Movie v1.6 - 2016-08-18
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo This script will take an image sequence along with an 

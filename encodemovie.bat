@@ -1,7 +1,7 @@
 @ECHO OFF
-@title Encode Movie v1.5 - immersive transformations
+@title Encode Movie v1.6 - immersive transformations
 
-echo Encode Movie v1.5 - 2016-03-29
+echo Encode Movie v1.6 - 2016-08-18
 echo script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo This script will use ffmpeg to re-encode a mp4/mov/mkv/avi movie file

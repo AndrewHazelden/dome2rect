@@ -1,7 +1,7 @@
 @ECHO OFF
-@title Alpha Extract v1.5
+@title Alpha Extract v1.6
 
-echo Alpha Extract v1.5 - 2016-03-28
+echo Alpha Extract v1.6 - 2016-08-18
 echo Script by Andrew Hazelden
 echo ----------------------------------------------------------------------
 echo Alpha Extract will extract a transparent mask from footage
